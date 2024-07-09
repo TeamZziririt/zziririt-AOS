@@ -57,6 +57,8 @@ fun LoginScreen(viewModel: LoginViewModel) {
                 imeAction = ImeAction.Done
             ),
             keyboardActions = KeyboardActions(onDone = {
+
+
                 viewModel.login()
             }),
             trailingIcon = {
@@ -81,6 +83,7 @@ fun LoginScreen(viewModel: LoginViewModel) {
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {
+
     // 미리보기용으로 ViewModel을 직접 생성
     val previewViewModel = LoginViewModel().apply {
         onUsernameChange("preview_user")
