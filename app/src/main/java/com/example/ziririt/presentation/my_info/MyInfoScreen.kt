@@ -5,20 +5,25 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.ziririt.ui.theme.ZiriritTheme
 
 @Composable
@@ -62,9 +67,51 @@ fun MyInfoScreen() {
             .fillMaxWidth()
             .padding(top = 16.dp),
             contentAlignment = Alignment.CenterStart) {
-            Text(text = "나의 찌리릿", color = Color.White)
-        }
-    } //colummmmm
+            Column {
+                Text(text = "나의 찌리릿", color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                Row {
+                    Image(
+                        painterResource(id = com.example.ziririt.R.drawable.profile__mypost),
+                        contentDescription = null,
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier.size(24.dp),
+                    )
+                    Text(text = "내가 작성한 게시글", color = Color.White)
+                } // row1
+
+                Row {
+                    Image(
+                        painterResource(id = com.example.ziririt.R.drawable.profile__mypost),
+                        contentDescription = null,
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier.size(24.dp),
+                    )
+                    Text(text = "내가 작성한 댓글", color = Color.White)
+                } // row2
+
+                Row {
+                    Image(
+                        painterResource(id = com.example.ziririt.R.drawable.profile__mypost),
+                        contentDescription = null,
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier.size(24.dp),
+                    )
+                    Text(text = "내가 찌리릿한 게시글", color = Color.White)
+                } // row3
+
+                Row {
+                    Image(
+                        painterResource(id = com.example.ziririt.R.drawable.profile__mypost),
+                        contentDescription = null,
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier.size(24.dp),
+                    )
+                    Text(text = "내가 찌리릿한 댓글", color = Color.White)
+                } // row4
+            }
+
+        } // box2
+    } //column
 }
 
 @Preview
