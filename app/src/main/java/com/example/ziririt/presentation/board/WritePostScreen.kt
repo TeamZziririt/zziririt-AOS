@@ -65,12 +65,12 @@ fun WritePostScreen() {
             }
 
             Spacer(modifier = Modifier.height(16.dp))
-            Divider(color = Color.White, thickness = 0.7.dp)
+            Divider(color = Color.Gray, thickness = 0.7.dp)
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(text = "제목을 입력해주세요", color = Color.White)
             Spacer(modifier = Modifier.height(16.dp))
-            Divider(color = Color.White, thickness = 0.7.dp)
+            Divider(color = Color.Gray, thickness = 0.7.dp)
 
             Image(
                 painterResource(id = R.drawable.writepost_photo),
