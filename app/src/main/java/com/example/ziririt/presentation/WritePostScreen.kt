@@ -77,7 +77,7 @@ fun WritePostScreen() {
                 contentDescription = null,
                 modifier = Modifier
                     .size(40.dp)
-                    .padding(top = 8.dp, start = 8.dp, bottom = 8.dp)
+                    .padding(top = 8.dp, start = 16.dp, bottom = 8.dp)
             )
             Text(text = "내용을 입력해주세요", color = Color.White)
         } //column
