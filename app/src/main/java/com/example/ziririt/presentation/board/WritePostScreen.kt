@@ -1,4 +1,4 @@
-package com.example.ziririt.presentation
+package com.example.ziririt.presentation.board
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
