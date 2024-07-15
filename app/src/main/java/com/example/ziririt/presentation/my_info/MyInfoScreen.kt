@@ -2,6 +2,7 @@ package com.example.ziririt.presentation.my_info
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -38,6 +39,16 @@ fun MyInfoScreen() {
             modifier = Modifier
                 .fillMaxWidth(),
         ) {
+            Image(
+                painterResource(id = com.example.ziririt.R.drawable.profile_setting),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(20.dp)
+//                    .align(Alignment)
+                    .clickable { 
+                        // settingscreen으로 이동
+                    }
+            )
             // BoardScreen의 내용
             Column(
                 modifier = Modifier
@@ -46,10 +57,9 @@ fun MyInfoScreen() {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally// Column 내 항목들 수직으로 가운데 정렬
             ) {
-                Image(
-                    painterResource(id = com.example.ziririt.R.drawable.profile_setting),
-                    contentDescription = null
-                )
+
+
+
                 Image(
                     painterResource(id = com.example.ziririt.R.drawable.profile_image),
                     contentDescription = null
@@ -68,14 +78,15 @@ fun MyInfoScreen() {
             .fillMaxWidth()
             .padding(top = 16.dp),
             contentAlignment = Alignment.CenterStart) {
-            Column {
+            Column(modifier = Modifier
+                .padding(bottom = 8.dp)) {
                 Text(text = "나의 찌리릿", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.Bold)
                 Row {
                     Image(
                         painterResource(id = com.example.ziririt.R.drawable.profile__mypost),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(24.dp),
+                        modifier = Modifier.size(20.dp),
                     )
                     Text(text = "내가 작성한 게시글", color = Color.White)
                 } // row1
@@ -85,7 +96,7 @@ fun MyInfoScreen() {
                         painterResource(id = com.example.ziririt.R.drawable.profile_mycomment),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(24.dp),
+                        modifier = Modifier.size(20.dp),
                     )
                     Text(text = "내가 작성한 댓글", color = Color.White)
                 } // row2
@@ -95,7 +106,7 @@ fun MyInfoScreen() {
                         painterResource(id = com.example.ziririt.R.drawable.profile_fire),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(24.dp),
+                        modifier = Modifier.size(20.dp),
                     )
                     Text(text = "내가 찌리릿한 게시글", color = Color.White)
                 } // row3
@@ -105,7 +116,7 @@ fun MyInfoScreen() {
                         painterResource(id = com.example.ziririt.R.drawable.profile_favorite),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(24.dp),
+                        modifier = Modifier.size(20.dp),
                     )
                     Text(text = "내가 찌리릿한 댓글", color = Color.White)
                 } // row4
@@ -119,7 +130,8 @@ fun MyInfoScreen() {
             .fillMaxWidth()
             .padding(top = 16.dp),
             contentAlignment = Alignment.CenterStart) {
-            Column {
+            Column(modifier = Modifier
+                .padding(bottom = 8.dp)) {
                 Text(text = "찌리릿 소식", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.Bold)
 
                 Row {
@@ -127,7 +139,7 @@ fun MyInfoScreen() {
                         painterResource(id = com.example.ziririt.R.drawable.profile_notice),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(24.dp),
+                        modifier = Modifier.size(20.dp),
                     )
                     Text(text = "공지사항", color = Color.White)
                 } // row1
@@ -137,7 +149,7 @@ fun MyInfoScreen() {
                         painterResource(id = com.example.ziririt.R.drawable.profile_event),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(24.dp),
+                        modifier = Modifier.size(20.dp),
                     )
                     Text(text = "이벤트", color = Color.White)
                 } // row2
@@ -147,14 +159,17 @@ fun MyInfoScreen() {
                         painterResource(id = com.example.ziririt.R.drawable.profile_iconshop),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(24.dp),
+                        modifier = Modifier.size(20.dp),
                     )
                     Text(text = "아이콘샵", color = Color.White)
+                    Spacer(modifier = Modifier.width(5.dp))
                 } // row 3
 
-                Text(text = "약관 및 정책", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+                Text(text = "약관 및 정책", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .padding(bottom = 8.dp))
 
-                Text(text = "건의 / 신고", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+                Text(text = "건의 / 신고", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.Bold,)
             }
 
         } // box3

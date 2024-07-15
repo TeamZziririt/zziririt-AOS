@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -27,20 +28,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ziririt.R
 import com.example.ziririt.ui.theme.ZiriritTheme
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 fun ProfileSetting() {
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        Column() {
+        Column {
             Text(
                 text = "프로필 설정",
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
                 fontSize = 16.sp,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .padding(top = 8.dp),
                 textAlign = TextAlign.Center
 
@@ -54,14 +57,20 @@ fun ProfileSetting() {
                 painterResource(id = R.drawable.profile_image),
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .align(Alignment.CenterHorizontally)
             )
             Text(
                 text = "사진 변경", color = Color.Blue,
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 8.dp, bottom = 8.dp),
                 textAlign = TextAlign.Center
             )
+        } // Column 1
+
+        Column() {
             Text(
                 text = "닉네임", color = Color.White,
                 modifier = Modifier.fillMaxWidth(),
@@ -72,9 +81,10 @@ fun ProfileSetting() {
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center
             )
-        }
-    }
+        } // Column 2
+    } //전체 c
 }
+
 
 @Preview
 @Composable
