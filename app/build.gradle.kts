@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.ziririt"
+    namespace = "com.cysj.zziririt"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.ziririt"
+        applicationId = "com.cysj.zziririt"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
