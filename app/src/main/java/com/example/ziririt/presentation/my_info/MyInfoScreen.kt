@@ -7,10 +7,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.ziririt.ui.theme.ZiriritTheme
 
 @Composable
-fun MyInfoScreen() {
+fun MyInfoScreen(
+    navController: NavController,
+    ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -23,8 +27,10 @@ fun MyInfoScreen() {
 @Preview(showBackground = true)
 @Composable
 fun MyInfoScreenPreview() {
+    val navController = rememberNavController()
+
     ZiriritTheme {
-        MyInfoScreen()
+        MyInfoScreen(navController)
     }
 }
 

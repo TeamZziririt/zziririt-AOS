@@ -13,15 +13,19 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import com.example.ziririt.presentation.board.BoardScreen
+import com.example.ziririt.presentation.board.streamer.StreamerScreen
 import com.example.ziririt.presentation.home.HomeScreen
 import com.example.ziririt.presentation.my_info.MyInfoScreen
+import com.example.ziririt.presentation.postcontent.PostContentScreen
 import com.example.ziririt.presentation.search.SearchScreen
 import com.example.ziririt.ui.theme.ZiriritTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(mainViewModel: MainViewModel = hiltViewModel()) {
-    val navController = rememberNavController()
+fun MainScreen(
+    navController: NavHostController,
+    mainViewModel: MainViewModel = hiltViewModel(),
+) {
     val items by mainViewModel.items.observeAsState(emptyList())
 
     Scaffold(
@@ -31,14 +35,19 @@ fun MainScreen(mainViewModel: MainViewModel = hiltViewModel()) {
             modifier = Modifier
                 .padding(contentPadding)
         ) {
-            NavigationHost(navController, items)
+            NavigationHost(
+                navController,
+            )
         }
     }
 }
 
 // 하단 네비게이션 바 설정
 @Composable
-fun BottomNavigationBar(navController: NavHostController, items: List<String>) {
+fun BottomNavigationBar(
+    navController: NavHostController,
+    items: List<String>,
+) {
     val currentBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = currentBackStackEntry?.destination
 
@@ -97,7 +106,7 @@ fun BottomNavigationBar(navController: NavHostController, items: List<String>) {
                     }
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    indicatorColor = Color.Transparent // 선택된 상태의 배경색을 투명하게 설정
+                    indicatorColor = Color.Transparent
                 )
             )
         }
@@ -105,12 +114,16 @@ fun BottomNavigationBar(navController: NavHostController, items: List<String>) {
 }
 
 @Composable
-fun NavigationHost(navController: NavHostController, items: List<String>) {
-    NavHost(navController, startDestination = items.getOrNull(0) ?: "home") {
-        composable("home") { HomeScreen() }
-        composable("board") { BoardScreen() }
-        composable("search") { SearchScreen() }
-        composable("my_info") { MyInfoScreen() }
+fun NavigationHost(navController: NavHostController) {
+    NavHost(
+        navController = navController,
+        startDestination = Screen.Home.route
+    ) {
+        composable(Screen.Home.route) { HomeScreen(navController) }
+        composable(Screen.Board.route) { StreamerScreen(navController) }
+        composable(Screen.Search.route) { SearchScreen(navController) }
+        composable(Screen.MyInfo.route) { MyInfoScreen(navController) }
+        composable(Screen.PostContent.route) { PostContentScreen(navController) }
     }
 }
 
@@ -123,6 +136,7 @@ fun MainScreenPreview() {
     }
 
     ZiriritTheme {
-        MainScreen(previewViewModel)
+        val navController = rememberNavController()
+        MainScreen(navController, previewViewModel)
     }
 }

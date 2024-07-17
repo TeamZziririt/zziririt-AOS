@@ -1,39 +1,51 @@
 package com.example.ziririt.presentation.home
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Warning
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.*
 import com.example.ziririt.R
+import com.example.ziririt.presentation.main.MainViewModel
 import com.example.ziririt.ui.theme.ZiriritTheme
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    navController: NavHostController,
+    homeViewModel: HomeViewModel = hiltViewModel(),
+) {
+    val scrollState = rememberScrollState()
 
     // TODO ViewModel로 이동
     var expanded by remember { mutableStateOf(false) }
-    val items = listOf("항목 1", "항목 2", "항목 3")
-    var selectedItem by remember { mutableStateOf("") }
-    var searchText by remember { mutableStateOf("") } // 검색어 상태 추가
-    var selectedText by remember { mutableStateOf("최신순") }
+
+    // ViewModel에서 스트리머 정보 아이템 목록을 관찰
+    val streamerInfoItems by homeViewModel.streamerInfoItems.collectAsState()
+    val boardRankingInfoItems by homeViewModel.boardRankingInfoItems.collectAsState()
+
 
     Box(
         modifier = Modifier
@@ -44,324 +56,244 @@ fun HomeScreen() {
                 top = 8.dp,
                 end = 16.dp
             )
+            .verticalScroll(scrollState)
     ) {
         Column {
+            // 최근 방문한 게시판 Text
             Row(
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = "스트리머 전체글",
+                    text = "최근 방문한 게시판",
                     color = Color.White,
                     fontSize = 24.sp,
                 )
+                Spacer(modifier = Modifier.weight(1f))
                 IconButton(
                     onClick = { expanded = !expanded },
                 ) {
                     Icon(
                         painter = painterResource(
-                            id = R.drawable.ic_baseline_arrow_drop_down_24
+                            id = R.drawable.ic_baseline_arrow_forward_ios_24
                         ), // 화살표 아이콘 리소스 ID
                         contentDescription = "Dropdown Arrow",
                         tint = Color.White
                     )
                 }
-                DropdownMenu(
-                    expanded = expanded,
-                    onDismissRequest = { expanded = false }
-                ) {
-                    items.forEach { item ->
-                        DropdownMenuItem(
-                            onClick = {
-                                selectedItem = item
-                                expanded = false
-                            },
-                            text = {
-                                Text(text = item)
-                            },
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+
+            // 최근 방문 게시판 메인
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        color = Color(0xFF303032),
+                        shape = RoundedCornerShape(12.dp)
+                    )
+                    .padding(
+                        vertical = 4.dp,
+                        horizontal = 16.dp,
+                    ),
+                contentAlignment = Alignment.Center
+            ) {
+                if (streamerInfoItems.isEmpty()) {
+                    Column(
+                        modifier = Modifier
+                            .padding(
+                                vertical = 16.dp,
+                            ),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        Text(
+                            text = "앗! 최근 방문한 게시판이 없어요.\n좋아하는 스트리머의 게시판을 방문해보세요!",
+                            color = Color.White,
+                            textAlign = TextAlign.Center,
+                            fontSize = 14.sp,
                         )
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Button(
+                            onClick = {
+                                // TODO 스트리머 찾아보기 버튼 클릭 시 수행할 동작
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color.Transparent,
+                                contentColor = Color.White,
+                                disabledContainerColor = Color.Gray,
+                                disabledContentColor = Color.White,
+                            ),
+                            border = BorderStroke(1.dp, Color(0xFFC1C1C1)),
+                            shape = RoundedCornerShape(8.dp),
+                            modifier = Modifier.padding(
+                                top = 8.dp
+                            )
+                        ) {
+                            Text(
+                                text = "스트리머 찾아보기"
+                            )
+                        }
                     }
+                } else {
+                    StreamerInfoList(streamerInfoItems)
                 }
             }
 
 
-            // 검색 박스
+            // 실시간 게시판 랭킹 텍스트
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp)
-                    .height(48.dp)
-                    .background(
-                        color = Color(0xFF303032),
-                        shape = RoundedCornerShape(12.dp)
-                    ),
                 verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
             ) {
-                TextField(
-                    value = searchText,
-                    onValueChange = { searchText = it },
-                    modifier = Modifier
-                        .weight(1f)
-                        .height(48.dp)
-                        .background(
-                            color = Color(0xFF303032),
-                            shape = RoundedCornerShape(16.dp)
-                        ),
-                    singleLine = true,
-                    textStyle = TextStyle(color = Color.Black),
-                    colors = TextFieldDefaults.textFieldColors(
-                        containerColor = Color.Transparent,
-                        focusedIndicatorColor = Color.Transparent, // 포커스 시 인디케이터 색상 투명
-                        unfocusedIndicatorColor = Color.Transparent // 비포커스 시 인디케이터 색상 투명
-                    )
+                Text(
+                    text = "실시간 게시판 랭킹",
+                    color = Color.White,
+                    fontSize = 24.sp,
                 )
+                Spacer(modifier = Modifier.weight(1f))
                 IconButton(
-                    onClick = {
-                        // TODO 검색 기능 추가
-                    },
-                    modifier = Modifier
+                    onClick = { expanded = !expanded },
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Search,
-                        contentDescription = "Search",
+                        painter = painterResource(
+                            id = R.drawable.ic_baseline_arrow_forward_ios_24
+                        ), // 화살표 아이콘 리소스 ID
+                        contentDescription = "랭킹 보기",
                         tint = Color.White
                     )
                 }
             }
+            Spacer(modifier = Modifier.height(8.dp))
 
-
-            // 최신순, 인기순 선택
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                if (selectedText == "최신순") {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_baseline_check_24), // 체크 아이콘 리소스 사용
-                        contentDescription = null,
-                        tint = Color(0xFF00FFA3),
-                    )
-                    Text(
-                        text = "최신순",
-                        modifier = Modifier
-                            .clickable { selectedText = "최신순" }
-                            .padding(8.dp),
-                        color = Color(0xFF00FFA3)
-                    )
-                    Text(
-                        text = "인기순",
-                        modifier = Modifier
-                            .clickable { selectedText = "인기순" }
-                            .padding(8.dp),
-                        color = Color(0xFF535353)
-                    )
-                } else {
-                    Text(
-                        text = "최신순",
-                        modifier = Modifier
-                            .clickable { selectedText = "최신순" }
-                            .padding(8.dp),
-                        color = Color(0xFF535353)
-                    )
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_baseline_check_24), // 체크 아이콘 리소스 사용
-                        contentDescription = null,
-                        tint = Color(0xFF00FFA3),
-                    )
-                    Text(
-                        text = "인기순",
-                        modifier = Modifier
-                            .clickable { selectedText = "인기순" }
-                            .padding(8.dp),
-                        color = Color(0xFF00FFA3)
-                    )
-                }
-            }
-
-
-            // 공지사항
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(
-                        color = Color(0xFF303032),
-                        shape = RoundedCornerShape(16.dp)
-                    )
-            ) {
-                // 공지사항 1
-                NoticeRow(
-                    icon = R.drawable.ic_baseline_error_24,
-                    title = "첫 번째 공지사항",
-                    date = "07-09"
-                )
-                Divider(color = Color.Gray, thickness = 0.5.dp)
-                // 공지사항 2
-                NoticeRow(
-                    icon = R.drawable.ic_baseline_error_24,
-                    title = "두 번째 공지사항",
-                    date = "07-08"
-                )
-                Divider(color = Color.Gray, thickness = 0.5.dp)
-                // 공지사항 3
-                NoticeRow(
-                    icon = R.drawable.ic_baseline_error_24,
-                    title = "세 번째 공지사항",
-                    date = "07-07"
-                )
-            }
-            Spacer(modifier = Modifier.height(16.dp))
-
-            // 메인 게시물
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(
-                        color = Color(0xFF303032),
-                        shape = RoundedCornerShape(12.dp)
-                    )
-            ) {
-                // 1번째 게시물
-                PostRow(
-                    image = R.drawable.img,
-                    title = "게시글 제목",
-                    commentNum = 5,
-                    name = "작성자 이름",
-                    date = "2023-07-09"
-                )
-                Divider(color = Color.Gray, thickness = 0.5.dp)
-
-                // 2번째 게시물
-                PostRow(
-                    image = R.drawable.img,
-                    title = "게시글 제목",
-                    commentNum = 5,
-                    name = "작성자 이름",
-                    date = "2023-07-09"
-                )
-            }
+            // 실시간 게시판 랭킹 메인
+            BoardRankingInfoList(boardRankingInfoItems)
         }
     }
 }
 
-// 공지사항
 @Composable
-fun NoticeRow(
-    icon: Int,
-    title: String,
-    date: String,
-) {
+fun StreamerInfoList(items: List<StreamerInfoItem>) {
+    Column {
+        items.take(5).forEach { item ->
+            StreamerInfoRow(item)
+            Divider(color = Color.Gray, thickness = 1.dp)
+        }
+    }
+}
+
+/*
+최근 방문한 스트리머 게시판 Info Row
+*/
+@Composable
+fun StreamerInfoRow(streamer: StreamerInfoItem) {
     Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp)
+    ) {
+        Column(
+            modifier = Modifier.weight(1f)
+        ) {
+            Text(
+                text = streamer.name,
+                color = Color(0xFF00FFA3),
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+            )
+            Text(
+                text = "구독자 수 ${streamer.subscribers} ",
+                color = Color.Gray,
+                fontSize = 8.sp,
+            )
+        }
+
+        Icon(
+            painter = painterResource(
+                id = if (streamer.isFollow) R.drawable.ic_baseline_star_24 else R.drawable.ic_baseline_star_border_24
+            ), // 팔로우 여부에 따라 다른 아이콘 표시
+            contentDescription = if (streamer.isFollow) "Following" else "Not Following",
+            tint = if (streamer.isFollow) Color(0xFF00FFA3) else Color.Gray,
+            modifier = Modifier.size(32.dp)
+        )
+    }
+}
+
+@Composable
+fun BoardRankingInfoList(items: List<BoardRankingInfoItem>) {
+    Column {
+        items.take(10).forEach { item ->
+            BoardRankingInfoRow(item)
+            Spacer(
+                modifier = Modifier.padding(
+                    vertical = 4.dp
+                )
+            )
+        }
+    }
+}
+
+/*
+실시간 인기 게시글 랭킹 Info Row
+*/
+@Composable
+fun BoardRankingInfoRow(item: BoardRankingInfoItem) {
+    Box(
         modifier = Modifier
             .fillMaxWidth()
             .background(
                 color = Color(0xFF303032),
                 shape = RoundedCornerShape(12.dp)
             )
-            .padding(
-                top = 8.dp,
-                bottom = 8.dp,
-                start = 16.dp,
-                end = 16.dp,
-            ),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Image(
-            painter = painterResource(id = icon),
-            contentDescription = null,
-            modifier = Modifier.size(24.dp),
-            colorFilter = androidx.compose.ui.graphics.ColorFilter.tint(Color(0xFFA4FFDE))
-        )
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(
-            text = title,
-            modifier = Modifier.weight(1f),
-            color = Color.White,
-        )
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(
-            text = date,
-            color = Color(0xFFADADAD)
-        )
-    }
-}
-
-
-// 게시물
-@Composable
-fun PostRow(
-    image: Int,
-    title: String,
-    commentNum: Int,
-    name: String,
-    date: String,
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(
-                color = Color(0xFF303032),
-                shape = RoundedCornerShape(16.dp)
-            )
-            .padding(
-                top = 8.dp,
-                bottom = 8.dp,
-                start = 16.dp,
-                end = 16.dp,
-            ),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Row(
-            modifier = Modifier.weight(1f)
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(
+                    vertical = 8.dp,
+                    horizontal = 16.dp,
+                )
         ) {
+            Text(
+                text = "${item.rank}",
+                color = Color.White,
+                fontSize = 16.sp,
+                modifier = Modifier.padding(end = 8.dp)
+            )
+            Spacer(modifier = Modifier.padding(4.dp))
+            Image(
+                painter = painterResource(id = item.imageRes),
+                contentDescription = "User Image",
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .size(40.dp)
+                    .padding(end = 8.dp)
+                    .clip(RoundedCornerShape(24.dp))
+            )
+            Spacer(modifier = Modifier.padding(4.dp))
+
             Column(
+                verticalArrangement = Arrangement.Center,
                 modifier = Modifier.weight(1f)
             ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Start,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        text = title,
-                        color = Color.White,
-                        fontSize = 16.sp
-                    )
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text(
-                        text = "($commentNum)",
-                        color = Color(0xFF00FFA3),
-                        fontSize = 14.sp
-                    )
-                }
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Start,
-                    verticalAlignment = Alignment.CenterVertically
-
-                ) {
-                    Text(
-                        text = name,
-                        color = Color(0xFFADADAD),
-                        fontSize = 12.sp
-                    )
-                    Spacer(modifier = Modifier.width(4.dp))
-
-                    Text(
-                        text = date,
-                        color = Color(0xFFADADAD),
-                        fontSize = 12.sp
-                    )
-                }
+                Text(
+                    text = item.title,
+                    color = Color.White,
+                    fontSize = 16.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(
+                    text = item.username,
+                    color = Color.Gray,
+                    fontSize = 14.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
             }
         }
-
-        Image(
-            painter = painterResource(id = image),
-            contentDescription = null,
-            modifier = Modifier
-                .size(40.dp)
-                .clip(RoundedCornerShape(8.dp))
-        )
     }
 }
 
@@ -369,8 +301,13 @@ fun PostRow(
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
+    // 미리보기용으로 ViewModel을 직접 생성
+    val previewViewModel = MainViewModel().apply {
+        setItems(listOf("home", "board", "search", "my_info"))
+    }
+
     ZiriritTheme {
-        HomeScreen()
+        val navController = rememberNavController()
+        HomeScreen(navController)
     }
 }
-

@@ -7,10 +7,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.ziririt.ui.theme.ZiriritTheme
 
 @Composable
-fun BoardScreen() {
+fun BoardScreen(
+    navController: NavController,
+    ) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -24,7 +28,8 @@ fun BoardScreen() {
 @Composable
 fun BoardScreenPreview() {
     ZiriritTheme {
-        BoardScreen()
+        val navController = rememberNavController()
+        BoardScreen(navController)
     }
 }
 
