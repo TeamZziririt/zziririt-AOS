@@ -5,5 +5,5 @@ enum class Screen(val route: String) {
     Board("board"),
     Search("search"),
     MyInfo("my_info"),
-    PostContent("post_content")
+    PostContent("post_content"),
 }

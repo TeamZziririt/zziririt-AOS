@@ -12,8 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
-import com.example.ziririt.presentation.board.BoardScreen
-import com.example.ziririt.presentation.board.streamer.StreamerScreen
+import com.example.ziririt.presentation.board.streamer_board.StreamerScreen
 import com.example.ziririt.presentation.home.HomeScreen
 import com.example.ziririt.presentation.my_info.MyInfoScreen
 import com.example.ziririt.presentation.postcontent.PostContentScreen

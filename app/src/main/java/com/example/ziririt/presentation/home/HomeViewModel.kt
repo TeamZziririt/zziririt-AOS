@@ -36,11 +36,11 @@ class HomeViewModel @Inject constructor() : ViewModel() {
 
             _boardRankingInfoItems.value = listOf(
                 BoardRankingInfoItem(rank = 1, imageRes = R.drawable.img, title = "게시글 제목 1", username = "유저닉네임 1"),
-                BoardRankingInfoItem(rank = 2, imageRes = R.drawable.img, title = "게시글 제목 2", username = "유저닉네임 2"),
-                BoardRankingInfoItem(rank = 3, imageRes = R.drawable.img, title = "게시글 제목 3", username = "유저닉네임 3"),
+//                BoardRankingInfoItem(rank = 2, imageRes = R.drawable.img, title = "게시글 제목 2", username = "유저닉네임 2"),
+//                BoardRankingInfoItem(rank = 3, imageRes = R.drawable.img, title = "게시글 제목 3", username = "유저닉네임 3"),
                 BoardRankingInfoItem(rank = 4, imageRes = R.drawable.img, title = "게시글 제목 4", username = "유저닉네임 4"),
                 BoardRankingInfoItem(rank = 5, imageRes = R.drawable.img, title = "게시글 제목 5", username = "유저닉네임 5"),
-                BoardRankingInfoItem(rank = 6, imageRes = R.drawable.img, title = "게시글 제목 6", username = "유저닉네임 6"),
+//                BoardRankingInfoItem(rank = 6, imageRes = R.drawable.img, title = "게시글 제목 6", username = "유저닉네임 6"),
                 BoardRankingInfoItem(rank = 7, imageRes = R.drawable.img, title = "게시글 제목 7", username = "유저닉네임 7"),
                 BoardRankingInfoItem(rank = 8, imageRes = R.drawable.img, title = "게시글 제목 8", username = "유저닉네임 8"),
                 BoardRankingInfoItem(rank = 9, imageRes = R.drawable.img, title = "게시글 제목 9", username = "유저닉네임 9"),
