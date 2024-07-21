@@ -95,67 +95,11 @@ fun MyInfoScreen(
                     modifier = Modifier
                         .padding(bottom = 5.dp)
                 )
-                Row(Modifier.clickable { }) {
-                    Image(
-                        painterResource(
-                            id = R.drawable.ic_mypage_write
-                        ),
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.padding(end = 3.dp)
-                    )
-                    Text(text = "내가 작성한 게시글",
-                        color = Color.White,
-                        fontFamily = gmarketsans_light,
-                        modifier = Modifier
-                            .align(Alignment.CenterVertically))
-                } // row1
-
-                Row(
-                    Modifier.clickable { }
-                ) {
-                    Image(
-                        painterResource(id = R.drawable.ic_mypage_comment),
-                        contentDescription = null,
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier.padding(end = 3.dp)
-                    )
-                    Text(text = "작성한 댓글",
-                        color = Color.White,
-                        fontFamily = gmarketsans_light,
-                        modifier = Modifier
-                            .align(Alignment.CenterVertically))
-                } // row2
-
-                Row(Modifier.clickable { }) {
-                    Image(
-                        painterResource(id = R.drawable.ic_mypage_fire),
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.padding(end = 3.dp)
-                    )
-                    Text(text = "내가 찌리릿한 게시글",
-                        color = Color.White,
-                        fontFamily = gmarketsans_light,
-                        modifier = Modifier
-                            .align(Alignment.CenterVertically))
-                } // row3
-
-                Row(Modifier.clickable { }) {
-                    Image(
-                        painterResource(id = R.drawable.ic_mypage_heart),
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.padding(end = 3.dp)
-                    )
-                    Text(text = "내가 찌리릿한 댓글",
-                        color = Color.White,
-                        fontFamily = gmarketsans_light,
-                        modifier = Modifier
-                            .align(Alignment.CenterVertically))
-                } // row4
+                MenuItem(iconName = R.drawable.ic_mypage_write, text = "내가 작성한 게시글",) {}
+                MenuItem(iconName = R.drawable.ic_mypage_comment, text = "내가 작성한 댓글") {}
+                MenuItem(iconName = R.drawable.ic_mypage_fire, text = "내가 찌리릿한 게시글") {}
+                MenuItem(iconName = R.drawable.ic_mypage_heart, text = "내가 찌리릿한 댓글") {}
             }
-
         } // box2
 
         Spacer(modifier = Modifier.width(5.dp))
@@ -175,48 +119,9 @@ fun MyInfoScreen(
                     modifier = Modifier.padding(bottom = 5.dp)
                 )
 
-                Row(Modifier.clickable { }) {
-                    Image(
-                        painterResource(id = R.drawable.ic_mypage_notice),
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.padding(end = 3.dp)
-                    )
-                    Text(text = "공지사항",
-                        color = Color.White,
-                        fontFamily = gmarketsans_light,
-                        modifier = Modifier
-                            .align(Alignment.CenterVertically))
-                } // row1
-
-                Row(Modifier.clickable { }) {
-                    Image(
-                        painterResource(id = R.drawable.ic_mypage_event),
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.padding(end = 3.dp)
-                    )
-                    Text(text = "이벤트",
-                        color = Color.White,
-                        fontFamily = gmarketsans_light,
-                        modifier = Modifier
-                            .align(Alignment.CenterVertically))
-                } // row2
-
-                Row(Modifier.clickable { }) {
-                    Image(
-                        painterResource(id = R.drawable.ic_mypage_iconshop),
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier
-                            .padding(end = 3.dp),
-                    )
-                    Text(text = "아이콘샵",
-                        color = Color.White,
-                        fontFamily = gmarketsans_light,
-                        modifier = Modifier
-                            .align(Alignment.CenterVertically))
-                } // row 3
+                MenuItem(iconName = R.drawable.ic_mypage_notice, text = "공지사항") {}
+                MenuItem(iconName = R.drawable.ic_mypage_event, text = "이벤트") {}
+                MenuItem(iconName = R.drawable.ic_mypage_iconshop, text = "아이콘샵") {}
 
                 Spacer(modifier = Modifier.width(5.dp))
 

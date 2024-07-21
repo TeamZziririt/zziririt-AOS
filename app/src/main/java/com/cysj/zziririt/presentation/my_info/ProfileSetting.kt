@@ -1,6 +1,7 @@
 package com.cysj.zziririt.presentation.my_info
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,6 +33,8 @@ fun ProfileSetting() {
             .fillMaxSize()
     ) {
         Column {
+            Image(painterResource(id = R.drawable.ic_back_btn), contentDescription = null,
+                modifier = Modifier.clickable {  })
             Text(
                 text = "프로필 설정",
                 fontWeight = FontWeight.Bold,
@@ -70,7 +73,8 @@ fun ProfileSetting() {
         Column() {
             Text(
                 text = "닉네임", color = Color.White,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .padding(5.dp),
                 textAlign = TextAlign.Center,
                 fontFamily = gmarketsans_light,
