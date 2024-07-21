@@ -23,6 +23,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cysj.zziririt.R
+import com.cysj.zziririt.ui.theme.gmarketsans_light
+import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 @Composable
 fun SettingScreen() {
@@ -44,6 +46,7 @@ fun SettingScreen() {
                     text = "환경설정",
                     color = Color.White,
                     textAlign = TextAlign.Center,
+                    fontFamily = gmarketsans_medium,
                     fontSize = 20.sp,
                 )
             }
@@ -60,9 +63,15 @@ fun SettingScreen() {
                     painterResource(id = R.drawable.ic_settings_bell),
                     contentDescription = null,
                     contentScale = ContentScale.Fit,
-                    modifier = Modifier.size(24.dp),
+                    modifier = Modifier
+                        .size(24.dp)
+                        .padding(end = 5.dp),
                 )
-                Text(text = "알림설정", color = Color.White)
+                Text(
+                    text = "알림설정", color = Color.White, fontFamily = gmarketsans_light,
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+                )
             } //row 1
 
             Row(
@@ -73,9 +82,13 @@ fun SettingScreen() {
                     painterResource(id = R.drawable.ic_profie_logo),
                     contentDescription = null,
                     contentScale = ContentScale.Fit,
-                    modifier = Modifier.size(24.dp),
+                    modifier = Modifier
+                        .size(24.dp)
+                        .padding(end = 5.dp),
                 )
-                Text(text = "프로필 수정", color = Color.White)
+                Text(text = "프로필 수정", color = Color.White, fontFamily = gmarketsans_light,
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically))
             } //row 2
 
             Row(
@@ -86,9 +99,13 @@ fun SettingScreen() {
                     painterResource(id = R.drawable.ic_settings_information),
                     contentDescription = null,
                     contentScale = ContentScale.Fit,
-                    modifier = Modifier.size(24.dp),
+                    modifier = Modifier
+                        .size(24.dp)
+                        .padding(end = 5.dp),
                 )
-                Text(text = "로그인 정보", color = Color.White)
+                Text(text = "로그인 정보", color = Color.White, fontFamily = gmarketsans_light,
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically))
             } //row 3
 
         } // Column
