@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.R
+import com.cysj.zziririt.presentation.main.Screen
 import com.cysj.zziririt.ui.theme.ZziriritTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -242,7 +243,11 @@ fun StreamerScreen(
 
 
             // 메인 게시물
-            PostList(posts = postItems)
+            PostList(
+                posts = postItems, onClick = {
+                    navController.navigate(Screen.PostContent.route)
+                }
+            )
 
 
             // 플로팅 버튼
@@ -321,6 +326,7 @@ fun NoticeRow(
 @Composable
 fun PostRow(
     item: PostItem,
+    onClick: () -> Unit,
 ) {
     Row(
         modifier = Modifier
@@ -334,10 +340,12 @@ fun PostRow(
                 bottom = 8.dp,
                 start = 16.dp,
                 end = 16.dp,
-            ),
+            )
+            .clickable(onClick = onClick),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
+        horizontalArrangement = Arrangement.SpaceBetween,
+
+        ) {
         Row(
             modifier = Modifier.weight(1f)
         ) {
@@ -404,7 +412,10 @@ fun PostRow(
 
 // 게시물 LazyColumn
 @Composable
-fun PostList(posts: List<PostItem>) {
+fun PostList(
+    posts: List<PostItem>,
+    onClick: () -> Unit,
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
@@ -414,7 +425,7 @@ fun PostList(posts: List<PostItem>) {
             )
     ) {
         items(posts) { post ->
-            PostRow(post)
+            PostRow(post, onClick)
         }
     }
 }
