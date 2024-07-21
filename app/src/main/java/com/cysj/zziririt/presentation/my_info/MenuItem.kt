@@ -13,6 +13,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.cysj.zziririt.ui.theme.gmarketsans_bold
 import com.cysj.zziririt.ui.theme.gmarketsans_light
 
 @Composable
@@ -36,5 +38,23 @@ fun MenuItem(iconName: Int, text: String, onClick: () -> Unit,) {
     }
 }
 
+@Composable
+fun TitleItem(text: String) {
+    Text(text = text,
+        color = Color.White,
+        fontSize = 22.sp,
+        fontFamily = gmarketsans_bold,
+        modifier = Modifier.padding(bottom = 5.dp))
+}
 
+@Composable
+fun TitleItemClickable (text: String,) {
+    Text(text = text,
+        color = Color.White,
+        fontSize = 22.sp,
+        fontFamily = gmarketsans_bold,
+        modifier = Modifier
+            .padding(top = 16.dp)
+            .clickable { })
+}
 

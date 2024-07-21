@@ -49,7 +49,7 @@ fun MyInfoScreen(
                 painterResource(id = R.drawable.ic_setting_line),
                 contentDescription = null,
                 // 맨 오른쪽으로
-                modifier = Modifier.clickable {  }
+                modifier = Modifier.clickable { }
             )
         }
         Box(
@@ -87,15 +87,9 @@ fun MyInfoScreen(
             contentAlignment = Alignment.CenterStart
         ) {
             Column {
-                Text(
-                    text = "나의 찌리릿",
-                    color = Color.White,
-                    fontSize = 22.sp,
-                    fontFamily = gmarketsans_bold,
-                    modifier = Modifier
-                        .padding(bottom = 5.dp)
-                )
-                MenuItem(iconName = R.drawable.ic_mypage_write, text = "내가 작성한 게시글",) {}
+                TitleItem(text = "나의 찌리릿")
+
+                MenuItem(iconName = R.drawable.ic_mypage_write, text = "내가 작성한 게시글") {}
                 MenuItem(iconName = R.drawable.ic_mypage_comment, text = "내가 작성한 댓글") {}
                 MenuItem(iconName = R.drawable.ic_mypage_fire, text = "내가 찌리릿한 게시글") {}
                 MenuItem(iconName = R.drawable.ic_mypage_heart, text = "내가 찌리릿한 댓글") {}
@@ -111,13 +105,7 @@ fun MyInfoScreen(
             contentAlignment = Alignment.CenterStart
         ) {
             Column {
-                Text(
-                    text = "찌리릿 소식",
-                    color = Color.White,
-                    fontSize = 22.sp,
-                    fontFamily = gmarketsans_bold,
-                    modifier = Modifier.padding(bottom = 5.dp)
-                )
+                TitleItem(text = "찌리릿 소식")
 
                 MenuItem(iconName = R.drawable.ic_mypage_notice, text = "공지사항") {}
                 MenuItem(iconName = R.drawable.ic_mypage_event, text = "이벤트") {}
@@ -125,32 +113,10 @@ fun MyInfoScreen(
 
                 Spacer(modifier = Modifier.width(5.dp))
 
-                Text(
-                    text = "약관 및 정책",
-                    color = Color.White,
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.Bold,
-                    fontFamily = gmarketsans_bold,
-                    modifier = Modifier
-                        .padding(top = 16.dp)
-                        .clickable { }
-
-                )
-
+                TitleItemClickable("약관 및 정책")
                 Spacer(modifier = Modifier.width(50.dp))
-
-                Text(
-                    text = "건의 / 신고",
-                    color = Color.White,
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.Bold,
-                    fontFamily = gmarketsans_bold,
-                    modifier = Modifier
-                        .padding(top = 16.dp)
-                        .clickable { }
-                )
+                TitleItemClickable("건의 / 신고")
             }
-
         } // box3
     } //column
 }
