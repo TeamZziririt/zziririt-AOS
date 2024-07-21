@@ -57,7 +57,7 @@ fun MyInfoScreen(
                     contentDescription = null
                 )
                 Image(
-                    painterResource(id = R.drawable.profile_image),
+                    painterResource(id = R.drawable.ic_profie_logo),
                     contentDescription = null
                 )
 
@@ -86,7 +86,7 @@ fun MyInfoScreen(
                 Row {
                     Image(
                         painterResource(
-                            id = R.drawable.profile__mypost
+                            id = R.drawable.ic_mypage_write
                         ),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
@@ -97,7 +97,7 @@ fun MyInfoScreen(
 
                 Row {
                     Image(
-                        painterResource(id = R.drawable.profile_mycomment),
+                        painterResource(id = R.drawable.ic_mypage_comment),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
                         modifier = Modifier.size(24.dp),
@@ -107,7 +107,7 @@ fun MyInfoScreen(
 
                 Row {
                     Image(
-                        painterResource(id = R.drawable.profile_fire),
+                        painterResource(id = R.drawable.ic_mypage_fire),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
                         modifier = Modifier.size(24.dp),
@@ -117,7 +117,7 @@ fun MyInfoScreen(
 
                 Row {
                     Image(
-                        painterResource(id = R.drawable.profile_favorite),
+                        painterResource(id = R.drawable.ic_mypage_heart),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
                         modifier = Modifier.size(24.dp),
@@ -146,7 +146,7 @@ fun MyInfoScreen(
 
                 Row {
                     Image(
-                        painterResource(id = R.drawable.profile_notice),
+                        painterResource(id = R.drawable.ic_mypage_notice),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
                         modifier = Modifier.size(24.dp),
@@ -156,7 +156,7 @@ fun MyInfoScreen(
 
                 Row {
                     Image(
-                        painterResource(id = R.drawable.profile_event),
+                        painterResource(id = R.drawable.ic_mypage_event),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
                         modifier = Modifier.size(24.dp),
@@ -166,7 +166,7 @@ fun MyInfoScreen(
 
                 Row {
                     Image(
-                        painterResource(id = R.drawable.profile_iconshop),
+                        painterResource(id = R.drawable.ic_mypage_iconshop),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
                         modifier = Modifier.size(24.dp),
