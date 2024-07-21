@@ -26,8 +26,8 @@ fun LoginScreens() {
     ) {
         Column {
             // 화면
-            Image(painterResource(id = R.drawable.back_btn) , contentDescription = null)
-            Image(painterResource(id = R.drawable.zziririt_icon), contentDescription = null)
+            Image(painterResource(id = R.drawable.ic_back_btn) , contentDescription = null)
+            Image(painterResource(id = R.drawable.ic_zziririt_logo), contentDescription = null)
             Text(
                 text = "로그인하고 찌리릿 서비스를 \n 자유롭게 사용해보세요",
                 fontSize = 30.sp,

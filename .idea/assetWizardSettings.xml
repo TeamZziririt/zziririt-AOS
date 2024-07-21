@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_zziririt_logo" />
-                            <entry key="sourceFile" value="C:\Users\korea\Downloads\zziririt_logo.svg" />
+                            <entry key="outputName" value="ic_back_btn" />
+                            <entry key="sourceFile" value="C:\Users\korea\Downloads\back_btn.svg" />
                           </map>
                         </option>
                       </PersistentState>
