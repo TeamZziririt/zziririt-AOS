@@ -43,7 +43,7 @@ fun SettingScreen() {
             ) {
                 Image(painterResource(id = R.drawable.ic_back_btn),
                     contentDescription = null,
-                    modifier = Modifier.clickable {  })
+                    modifier = Modifier.clickable { })
                 Text(
                     modifier = Modifier
                         .fillMaxWidth(),
@@ -59,58 +59,10 @@ fun SettingScreen() {
             Divider(color = Color.Gray, thickness = 0.5.dp)
             Spacer(modifier = Modifier.height(16.dp))
 
-            Row(
-                modifier = Modifier
-                    .padding(bottom = 8.dp)
-            ) {
-                Image(
-                    painterResource(id = R.drawable.ic_settings_bell),
-                    contentDescription = null,
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier
-                        .size(24.dp)
-                        .padding(end = 5.dp),
-                )
-                Text(
-                    text = "알림설정", color = Color.White, fontFamily = gmarketsans_light,
-                    modifier = Modifier
-                        .align(Alignment.CenterVertically)
-                )
-            } //row 1
+            MenuItem(iconName = R.drawable.ic_settings_bell, text = "알림설정") {}
+            MenuItem(iconName = R.drawable.ic_settings_profile_edit, text = "프로필 수정") {}
+            MenuItem(iconName = R.drawable.ic_settings_information, text = "로그인 정보") {}
 
-            Row(
-                modifier = Modifier
-                    .padding(bottom = 8.dp)
-            ) {
-                Image(
-                    painterResource(id = R.drawable.ic_profie_logo),
-                    contentDescription = null,
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier
-                        .size(24.dp)
-                        .padding(end = 5.dp),
-                )
-                Text(text = "프로필 수정", color = Color.White, fontFamily = gmarketsans_light,
-                    modifier = Modifier
-                        .align(Alignment.CenterVertically))
-            } //row 2
-
-            Row(
-                modifier = Modifier
-                    .padding(bottom = 8.dp)
-            ) {
-                Image(
-                    painterResource(id = R.drawable.ic_settings_information),
-                    contentDescription = null,
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier
-                        .size(24.dp)
-                        .padding(end = 5.dp),
-                )
-                Text(text = "로그인 정보", color = Color.White, fontFamily = gmarketsans_light,
-                    modifier = Modifier
-                        .align(Alignment.CenterVertically))
-            } //row 3
 
         } // Column
     } // box
