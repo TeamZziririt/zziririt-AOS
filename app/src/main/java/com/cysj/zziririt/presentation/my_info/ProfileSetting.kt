@@ -47,7 +47,7 @@ fun ProfileSetting() {
             Spacer(modifier = Modifier.height(16.dp))
 
             Image(
-                painterResource(id = R.drawable.profile_image),
+                painterResource(id = R.drawable.ic_profie_logo),
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier

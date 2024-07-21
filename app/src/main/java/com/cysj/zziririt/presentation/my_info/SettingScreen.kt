@@ -57,7 +57,7 @@ fun SettingScreen() {
                     .padding(bottom = 8.dp)
             ) {
                 Image(
-                    painterResource(id = R.drawable.profile_bell),
+                    painterResource(id = R.drawable.ic_settings_bell),
                     contentDescription = null,
                     contentScale = ContentScale.Fit,
                     modifier = Modifier.size(24.dp),
@@ -70,7 +70,7 @@ fun SettingScreen() {
                     .padding(bottom = 8.dp)
             ) {
                 Image(
-                    painterResource(id = R.drawable.profile_edit),
+                    painterResource(id = R.drawable.ic_profie_logo),
                     contentDescription = null,
                     contentScale = ContentScale.Fit,
                     modifier = Modifier.size(24.dp),
@@ -83,7 +83,7 @@ fun SettingScreen() {
                     .padding(bottom = 8.dp)
             ) {
                 Image(
-                    painterResource(id = R.drawable.profile__informantion),
+                    painterResource(id = R.drawable.ic_settings_information),
                     contentDescription = null,
                     contentScale = ContentScale.Fit,
                     modifier = Modifier.size(24.dp),
