@@ -8,7 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class StreamerViewModel @Inject constructor() : ViewModel() {
+class StreamerBoardViewModel @Inject constructor() : ViewModel() {
 
     companion object {
         const val TAG = "HomeViewModel"
