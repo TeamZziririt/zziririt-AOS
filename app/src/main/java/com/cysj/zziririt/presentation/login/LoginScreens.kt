@@ -72,7 +72,7 @@ fun LoginScreens() {
                 Spacer(modifier = Modifier.height(16.dp))
                 Image(
                     painterResource(
-                        id = R.drawable.zziririt_icon
+                        id = R.drawable.ic_zziririt_logo
                     ),
                     contentDescription = "Zziririt Image"
                 )

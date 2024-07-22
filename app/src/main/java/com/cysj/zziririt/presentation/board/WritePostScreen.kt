@@ -73,7 +73,7 @@ fun WritePostScreen() {
             Divider(color = Color.Gray, thickness = 0.7.dp)
 
             Image(
-                painterResource(id = R.drawable.writepost_photo),
+                painterResource(id = R.drawable.ic_writepage_photo),
                 contentDescription = null,
                 modifier = Modifier
                     .size(40.dp)

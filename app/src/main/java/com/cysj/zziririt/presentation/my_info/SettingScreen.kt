@@ -1,6 +1,7 @@
 package com.cysj.zziririt.presentation.my_info
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,6 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cysj.zziririt.R
+import com.cysj.zziririt.ui.theme.gmarketsans_light
+import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 @Composable
 fun SettingScreen() {
@@ -38,12 +41,16 @@ fun SettingScreen() {
                     .height(40.dp), // 원하는 높이 설정
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                Image(painterResource(id = R.drawable.ic_back_btn),
+                    contentDescription = null,
+                    modifier = Modifier.clickable { })
                 Text(
                     modifier = Modifier
                         .fillMaxWidth(),
                     text = "환경설정",
                     color = Color.White,
                     textAlign = TextAlign.Center,
+                    fontFamily = gmarketsans_medium,
                     fontSize = 20.sp,
                 )
             }
@@ -52,44 +59,10 @@ fun SettingScreen() {
             Divider(color = Color.Gray, thickness = 0.5.dp)
             Spacer(modifier = Modifier.height(16.dp))
 
-            Row(
-                modifier = Modifier
-                    .padding(bottom = 8.dp)
-            ) {
-                Image(
-                    painterResource(id = R.drawable.profile_bell),
-                    contentDescription = null,
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier.size(24.dp),
-                )
-                Text(text = "알림설정", color = Color.White)
-            } //row 1
+            MenuItem(iconName = R.drawable.ic_settings_bell, text = "알림설정") {}
+            MenuItem(iconName = R.drawable.ic_settings_profile_edit, text = "프로필 수정") {}
+            MenuItem(iconName = R.drawable.ic_settings_information, text = "로그인 정보") {}
 
-            Row(
-                modifier = Modifier
-                    .padding(bottom = 8.dp)
-            ) {
-                Image(
-                    painterResource(id = R.drawable.profile_edit),
-                    contentDescription = null,
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier.size(24.dp),
-                )
-                Text(text = "프로필 수정", color = Color.White)
-            } //row 2
-
-            Row(
-                modifier = Modifier
-                    .padding(bottom = 8.dp)
-            ) {
-                Image(
-                    painterResource(id = R.drawable.profile__informantion),
-                    contentDescription = null,
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier.size(24.dp),
-                )
-                Text(text = "로그인 정보", color = Color.White)
-            } //row 3
 
         } // Column
     } // box
