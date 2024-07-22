@@ -21,13 +21,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.cysj.zziririt.R
 import com.cysj.zziririt.ui.theme.ZziriritTheme
 import com.cysj.zziririt.ui.theme.gmarketsans_light
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 @Composable
-fun ProfileSetting() {
+fun ProfileSetting(navController : NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -95,7 +96,7 @@ fun ProfileSetting() {
 @Composable
 fun ProfileSettingScreen() {
     ZziriritTheme {
-        ProfileSetting()
+//        ProfileSetting()
     }
 
 }

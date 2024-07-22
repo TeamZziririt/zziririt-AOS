@@ -25,18 +25,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.ui.theme.ZziriritTheme
 import com.cysj.zziririt.R
-import com.cysj.zziririt.ui.theme.gmarketsans_bold
-import com.cysj.zziririt.ui.theme.gmarketsans_light
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
+import androidx.navigation.compose.composable
+
 
 @Composable
-fun MyInfoScreen(
-    navController: NavHostController,
-) {
+fun MyInfoScreen(navController : NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -49,7 +49,9 @@ fun MyInfoScreen(
                 painterResource(id = R.drawable.ic_setting_line),
                 contentDescription = null,
                 // 맨 오른쪽으로
-                modifier = Modifier.clickable { }
+                modifier = Modifier.clickable {
+//                    navController.navigate(MyPageScreen.MyPage_Setting.route)
+                }
             )
         }
         Box(
@@ -76,9 +78,7 @@ fun MyInfoScreen(
             }
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
-        Divider(color = Color.White, thickness = 0.5.dp)
-
+        Divider(color = Color.White, thickness = 0.5.dp, modifier = Modifier.padding(top = 16.dp, bottom = 16.dp))
 
         Box(
             modifier = Modifier
@@ -120,6 +120,8 @@ fun MyInfoScreen(
         } // box3
     } //column
 }
+
+
 
 @Preview
 @Composable
