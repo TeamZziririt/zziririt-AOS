@@ -370,7 +370,9 @@ fun PostContentScreenPreview() {
             "위 코드에서 LazyColumn의 modifier에 weight(1f)를 추가하여 높이 제약을 설정했습니다. 이렇게 하면 LazyColumn이 무한한 높이 제약 조건으로 측정되지 않도록 보장할 수 있습니다."
         ),
         CommentItem("닉네임2", "2시간 전", "댓글 내용2"),
-        CommentItem("닉네임3", "3시간 전", "댓글 내용3")
+        CommentItem("닉네임3", "7시간 전", "댓글 내용3"),
+        CommentItem("닉네임4", "7시간 전", "댓글 내용4"),
+        CommentItem("닉네임5", "7시간 전", "댓글 내용5"),
     )
 
     val previewViewModel = PostContentViewModel().apply {
