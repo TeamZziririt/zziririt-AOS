@@ -1,6 +1,7 @@
 package com.cysj.zziririt.presentation.my_info
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,21 +21,27 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.cysj.zziririt.R
 import com.cysj.zziririt.ui.theme.ZziriritTheme
+import com.cysj.zziririt.ui.theme.gmarketsans_light
+import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 @Composable
-fun ProfileSetting() {
+fun ProfileSetting(navController : NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
     ) {
         Column {
+            Image(painterResource(id = R.drawable.ic_back_btn), contentDescription = null,
+                modifier = Modifier.clickable {  })
             Text(
                 text = "프로필 설정",
                 fontWeight = FontWeight.Bold,
+                fontFamily = gmarketsans_medium,
                 color = Color.White,
-                fontSize = 16.sp,
+                fontSize = 20.sp,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 8.dp),
@@ -47,7 +54,7 @@ fun ProfileSetting() {
             Spacer(modifier = Modifier.height(16.dp))
 
             Image(
-                painterResource(id = R.drawable.profile_image),
+                painterResource(id = R.drawable.ic_profie_logo),
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
@@ -56,6 +63,7 @@ fun ProfileSetting() {
             )
             Text(
                 text = "사진 변경", color = Color.Blue,
+                fontFamily = gmarketsans_light,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 8.dp, bottom = 8.dp),
@@ -66,13 +74,18 @@ fun ProfileSetting() {
         Column() {
             Text(
                 text = "닉네임", color = Color.White,
-                modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp),
+                textAlign = TextAlign.Center,
+                fontFamily = gmarketsans_light,
+
             )
             Text(
                 text = "(기존 닉네임)", color = Color.White,
                 modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                fontFamily = gmarketsans_light,
             )
         } // Column 2
     } //전체 c
@@ -83,7 +96,7 @@ fun ProfileSetting() {
 @Composable
 fun ProfileSettingScreen() {
     ZziriritTheme {
-        ProfileSetting()
+//        ProfileSetting()
     }
 
 }

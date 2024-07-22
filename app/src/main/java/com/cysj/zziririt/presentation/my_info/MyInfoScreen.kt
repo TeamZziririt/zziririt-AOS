@@ -1,6 +1,7 @@
 package com.cysj.zziririt.presentation.my_info
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,22 +25,35 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.ui.theme.ZziriritTheme
 import com.cysj.zziririt.R
+import com.cysj.zziririt.ui.theme.gmarketsans_medium
+import androidx.navigation.compose.composable
+
 
 @Composable
-fun MyInfoScreen(
-    navController: NavHostController,
-) {
+fun MyInfoScreen(navController : NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.Start
+//        horizontalAlignment = Alignment.Start
     ) {
+        Column(horizontalAlignment = Alignment.End) {
+            Image(
+                painterResource(id = R.drawable.ic_setting_line),
+                contentDescription = null,
+                // 맨 오른쪽으로
+                modifier = Modifier.clickable {
+//                    navController.navigate(MyPageScreen.MyPage_Setting.route)
+                }
+            )
+        }
         Box(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -53,22 +67,18 @@ fun MyInfoScreen(
                 horizontalAlignment = Alignment.CenterHorizontally// Column 내 항목들 수직으로 가운데 정렬
             ) {
                 Image(
-                    painterResource(id = R.drawable.ic_setting_line),
-                    contentDescription = null
-                )
-                Image(
-                    painterResource(id = R.drawable.profile_image),
+                    painterResource(id = R.drawable.ic_profie_logo),
                     contentDescription = null
                 )
 
-                Text(text = "유저닉네임임", modifier = Modifier.padding(top = 8.dp), color = Color.White)
-                //
+                Text(
+                    text = "대니주", modifier = Modifier.padding(top = 8.dp), color = Color.White,
+                    fontFamily = gmarketsans_medium
+                )
             }
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
-        Divider(color = Color.White, thickness = 0.5.dp)
-
+        Divider(color = Color.White, thickness = 0.5.dp, modifier = Modifier.padding(top = 16.dp, bottom = 16.dp))
 
         Box(
             modifier = Modifier
@@ -77,55 +87,13 @@ fun MyInfoScreen(
             contentAlignment = Alignment.CenterStart
         ) {
             Column {
-                Text(
-                    text = "나의 찌리릿",
-                    color = Color.White,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                Row {
-                    Image(
-                        painterResource(
-                            id = R.drawable.profile__mypost
-                        ),
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(24.dp),
-                    )
-                    Text(text = "내가 작성한 게시글", color = Color.White)
-                } // row1
+                TitleItem(text = "나의 찌리릿")
 
-                Row {
-                    Image(
-                        painterResource(id = R.drawable.profile_mycomment),
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(24.dp),
-                    )
-                    Text(text = "내가 작성한 댓글", color = Color.White)
-                } // row2
-
-                Row {
-                    Image(
-                        painterResource(id = R.drawable.profile_fire),
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(24.dp),
-                    )
-                    Text(text = "내가 찌리릿한 게시글", color = Color.White)
-                } // row3
-
-                Row {
-                    Image(
-                        painterResource(id = R.drawable.profile_favorite),
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(24.dp),
-                    )
-                    Text(text = "내가 찌리릿한 댓글", color = Color.White)
-                } // row4
+                MenuItem(iconName = R.drawable.ic_mypage_write, text = "내가 작성한 게시글") {}
+                MenuItem(iconName = R.drawable.ic_mypage_comment, text = "내가 작성한 댓글") {}
+                MenuItem(iconName = R.drawable.ic_mypage_fire, text = "내가 찌리릿한 게시글") {}
+                MenuItem(iconName = R.drawable.ic_mypage_heart, text = "내가 찌리릿한 댓글") {}
             }
-
         } // box2
 
         Spacer(modifier = Modifier.width(5.dp))
@@ -137,61 +105,23 @@ fun MyInfoScreen(
             contentAlignment = Alignment.CenterStart
         ) {
             Column {
-                Text(
-                    text = "찌리릿 소식",
-                    color = Color.White,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                TitleItem(text = "찌리릿 소식")
 
-                Row {
-                    Image(
-                        painterResource(id = R.drawable.profile_notice),
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(24.dp),
-                    )
-                    Text(text = "공지사항", color = Color.White)
-                } // row1
+                MenuItem(iconName = R.drawable.ic_mypage_notice, text = "공지사항") {}
+                MenuItem(iconName = R.drawable.ic_mypage_event, text = "이벤트") {}
+                MenuItem(iconName = R.drawable.ic_mypage_iconshop, text = "아이콘샵") {}
 
-                Row {
-                    Image(
-                        painterResource(id = R.drawable.profile_event),
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(24.dp),
-                    )
-                    Text(text = "이벤트", color = Color.White)
-                } // row2
+                Spacer(modifier = Modifier.width(5.dp))
 
-                Row {
-                    Image(
-                        painterResource(id = R.drawable.profile_iconshop),
-                        contentDescription = null,
-                        contentScale = ContentScale.Fit,
-                        modifier = Modifier.size(24.dp),
-                    )
-                    Text(text = "아이콘샵", color = Color.White)
-                } // row 3
-
-                Text(
-                    text = "약관 및 정책",
-                    color = Color.White,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold
-                )
-
-                Text(
-                    text = "건의 / 신고",
-                    color = Color.White,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                TitleItemClickable("약관 및 정책")
+                Spacer(modifier = Modifier.width(50.dp))
+                TitleItemClickable("건의 / 신고")
             }
-
         } // box3
     } //column
 }
+
+
 
 @Preview
 @Composable
