@@ -1,3 +1,6 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -5,6 +8,13 @@ plugins {
     id("org.jetbrains.kotlin.kapt")
     id("dagger.hilt.android.plugin")
 }
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(FileInputStream(localPropertiesFile))
+}
+
 
 android {
     namespace = "com.cysj.zziririt"
@@ -18,6 +28,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "NAVER_CLIENT_ID", "\"${localProperties["NAVER_CLIENT_ID"]}\"")
+        buildConfigField("String", "NAVER_CLIENT_SECRET", "\"${localProperties["NAVER_CLIENT_SECRET"]}\"")
+        buildConfigField("String", "NAVER_CLIENT_NAME", "\"${localProperties["NAVER_CLIENT_NAME"]}\"")
     }
 
     buildTypes {
@@ -44,6 +58,7 @@ android {
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     composeOptions {
@@ -72,7 +87,10 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-extended")
     implementation("com.google.accompanist:accompanist-navigation-animation:0.23.1")
-    implementation ("com.google.accompanist:accompanist-systemuicontroller:0.34.0")
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.34.0")
+
+    // Compose Navigation
+    implementation("androidx.navigation:navigation-compose:2.8.0-beta05")
 
     // navigation
     implementation("androidx.navigation:navigation-compose:2.7.7")
@@ -88,7 +106,7 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
 
     // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
 
     // kapt
     kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0")
@@ -106,7 +124,7 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     implementation("androidx.compose.runtime:runtime-livedata:1.6.8")
 
-    // Compose Navigation
-    implementation ("androidx.navigation:navigation-compose:2.4.0-alpha10")
 
+    // 네아로
+    implementation("com.navercorp.nid:oauth:5.9.1")
 }
