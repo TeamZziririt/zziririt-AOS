@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Divider
@@ -38,7 +39,7 @@ fun SettingScreen() {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(40.dp), // 원하는 높이 설정
+                    .heightIn(min = 40.dp), // 원하는 높이 설정
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(painterResource(id = R.drawable.ic_back_btn),
