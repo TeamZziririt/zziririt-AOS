@@ -37,9 +37,6 @@ class LoginActivity : ComponentActivity() {
             BuildConfig.NAVER_CLIENT_NAME
         )
 
-        // viewmodel 초기화
-        initModel()
-
         setContent {
             ZziriritTheme {
                 val color = Color(0xFF141517)
@@ -57,19 +54,6 @@ class LoginActivity : ComponentActivity() {
                 ) {
                     LoginScreen(loginViewModel)
                 }
-            }
-        }
-    }
-
-    private fun initModel() = with(loginViewModel) {
-        loginSuccess.observe(this@LoginActivity) { result ->
-            if (result) {
-                //MainActivity로 이동...
-                val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                Toast.makeText(this@LoginActivity, R.string.login_fail, Toast.LENGTH_SHORT).show()
             }
         }
     }
