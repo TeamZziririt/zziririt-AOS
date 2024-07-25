@@ -8,6 +8,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontVariation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
@@ -15,6 +16,7 @@ import androidx.navigation.compose.*
 import com.cysj.zziririt.presentation.board.streamer_board.StreamerScreen
 import com.cysj.zziririt.presentation.home.HomeScreen
 import com.cysj.zziririt.presentation.my_info.MyInfoScreen
+import com.cysj.zziririt.presentation.my_info.SettingScreen
 import com.cysj.zziririt.presentation.postcontent.PostContentScreen
 import com.cysj.zziririt.presentation.search.SearchScreen
 import com.cysj.zziririt.ui.theme.ZziriritTheme
@@ -123,6 +125,7 @@ fun NavigationHost(navController: NavHostController) {
         composable(Screen.Search.route) { SearchScreen(navController) }
         composable(Screen.MyInfo.route) { MyInfoScreen(navController) }
         composable(Screen.PostContent.route) { PostContentScreen(navController) }
+        // setting
     }
 }
 

@@ -33,6 +33,7 @@ import com.cysj.zziririt.ui.theme.ZziriritTheme
 import com.cysj.zziririt.R
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 import androidx.navigation.compose.composable
+import com.cysj.zziririt.presentation.main.Screen
 
 
 @Composable
@@ -47,7 +48,10 @@ fun MyInfoScreen(navController : NavController) {
         Column(horizontalAlignment = Alignment.End) {
             Image(
                 painterResource(id = R.drawable.ic_setting_line),
-                contentDescription = null
+                contentDescription = null,
+                modifier = Modifier.clickable {
+                    navController.navigate(Screen.Setting.route)
+                }
             )
         }
         Box(
