@@ -46,7 +46,8 @@ fun WritePostScreen() {
             ) {
                 Row(modifier = Modifier
                     .heightIn(min = 56.dp)
-                    .align(Alignment.CenterVertically)) {
+                    .align(Alignment.CenterVertically),
+                    verticalAlignment = Alignment.CenterVertically) {
                     Image(
                         painterResource(id = R.drawable.ic_write_x),
                         contentDescription = null,
