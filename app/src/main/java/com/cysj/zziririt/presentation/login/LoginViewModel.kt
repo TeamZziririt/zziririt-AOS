@@ -1,58 +1,51 @@
 package com.cysj.zziririt.presentation.login
 
+import android.content.Context
+import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.cysj.zziririt.domain.model.OAuthLoginResult
+import com.cysj.zziririt.domain.usecase.OAuthLoginUseCase
+import com.cysj.zziririt.presentation.login.model.AuthState
+import com.navercorp.nid.NaverIdLoginSDK
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
 //    context: Context,
+    private val oAuthLoginUseCase: OAuthLoginUseCase
 ) : ViewModel() {
 
     companion object {
         const val TAG = "LoginViewModel"
     }
 
-    private val _loginSuccess = MutableLiveData<Boolean>()
-    val loginSuccess: LiveData<Boolean> get() = _loginSuccess
+    /*
+    * Naver Login API */
+    private val _authState = MutableStateFlow<AuthState>(AuthState.Idle)
+    val authState: StateFlow<AuthState> = _authState
 
-    var username = mutableStateOf("")
-        private set
-
-    var password = mutableStateOf("")
-        private set
-
-    var passwordVisible = mutableStateOf(false)
-        private set
-
-    fun onUsernameChange(newUsername: String) {
-        username.value = newUsername
-    }
-
-    fun onPasswordChange(newPassword: String) {
-        password.value = newPassword
-    }
-
-    fun onPasswordVisibilityToggle() {
-        passwordVisible.value = !passwordVisible.value
-    }
-
-    fun login() {
+    fun authenticate(context: Context) {
         viewModelScope.launch {
-            // 로그인 로직을 여기에 추가
-            val isSuccess = authenticateUser(username.value, password.value)
-            _loginSuccess.value = isSuccess
+            oAuthLoginUseCase.execute(context).collect { result ->
+                when (result) {
+                    is OAuthLoginResult.Success -> {
+                        _authState.value = AuthState.Success
+                        Log.d(TAG, NaverIdLoginSDK.getAccessToken() ?: "null")
+                    }
+                    is OAuthLoginResult.Failure -> {
+                        _authState.value = AuthState.Failure(result.errorCode, result.errorDescription)
+                    }
+                }
+            }
         }
     }
 
-    private suspend fun authenticateUser(username: String, password: String): Boolean {
-        // 실제 로그인 검증 로직을 여기에 추가합니다.
-        // 예를 들어, 서버와 통신하여 로그인 정보를 확인하는 코드
-        return username == "test" && password == "test" // Test
-    }
 }
