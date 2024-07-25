@@ -3,6 +3,7 @@
 package com.cysj.zziririt.presentation.login
 
 import android.app.Activity
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -22,6 +23,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,14 +35,40 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.cysj.zziririt.R
+import com.cysj.zziririt.domain.usecase.OAuthLoginUseCase
+import com.cysj.zziririt.presentation.board.streamer_board.StreamerBoardViewModel
+import com.cysj.zziririt.presentation.login.model.AuthState
+import com.navercorp.nid.NaverIdLoginSDK
+import com.navercorp.nid.oauth.OAuthLoginCallback
+import com.navercorp.nid.oauth.view.NidOAuthLoginButton
 
 @Composable
 fun LoginScreen(
     viewModel: LoginViewModel = hiltViewModel(),
 ) {
     val context = LocalContext.current
+    val authState by viewModel.authState.collectAsState()
+
+
+    when (authState) {
+        is AuthState.Success -> {
+            Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
+        }
+        is AuthState.Failure -> {
+            val errorState = authState as AuthState.Failure
+            Toast.makeText(
+                context,
+                "errorCode: ${errorState.errorCode}, errorDesc: ${errorState.errorDescription}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        else -> {
+            // Idle 상태일 때 UI 업데이트
+        }
+    }
 
     Box(
         modifier = Modifier
@@ -95,7 +124,7 @@ fun LoginScreen(
 
 
                 /*
-                * 네이버 로그인 버튼*/
+                * 네이버 로그인 버튼
                 Box(
                     modifier = Modifier
                         .background(
@@ -109,7 +138,6 @@ fun LoginScreen(
                         .padding(
                             4.dp
                         )
-
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -131,6 +159,23 @@ fun LoginScreen(
                         )
                     }
                 }
+                Spacer(modifier = Modifier.height(8.dp))
+                * */
+
+                /*
+                * 네이버 로그인 버튼 */
+                AndroidView(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp),
+                    factory = { ctx ->
+                        NidOAuthLoginButton(ctx).apply {
+                            setOnClickListener {
+                                viewModel.authenticate(context)
+                            }
+                        }
+                    }
+                )
                 Spacer(modifier = Modifier.height(8.dp))
 
                 /*
@@ -177,5 +222,10 @@ fun LoginScreen(
 @Preview
 @Composable
 fun LoginScreensPreview() {
+
+    val previewViewModel = LoginViewModel.apply {
+
+    }
+
     LoginScreen()
 }
