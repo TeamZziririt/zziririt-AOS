@@ -24,12 +24,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.R
+import com.cysj.zziririt.presentation.main.Screen
 import com.cysj.zziririt.ui.theme.gmarketsans_light
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 @Composable
-fun SettingScreen() {
+fun SettingScreen(navController : NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -60,9 +63,10 @@ fun SettingScreen() {
             Divider(color = Color.Gray, thickness = 0.5.dp)
             Spacer(modifier = Modifier.height(8.dp))
 
-            MenuItem(iconName = R.drawable.ic_settings_bell, text = "알림설정") {}
-            MenuItem(iconName = R.drawable.ic_settings_profile_edit, text = "프로필 수정",) {}
-            MenuItem(iconName = R.drawable.ic_settings_information, text = "로그인 정보") {}
+            MenuItem(iconName = R.drawable.ic_settings_bell, text = "알림설정",onClick = {})
+            MenuItem(iconName = R.drawable.ic_settings_profile_edit, text = "프로필 수정", onClick = {})
+            MenuItem(iconName = R.drawable.ic_settings_information, text = "로그인 정보",onClick = {})
+
 
 
         } // Column
@@ -72,5 +76,6 @@ fun SettingScreen() {
 @Preview
 @Composable
 fun SettingScreenScreen() {
-    SettingScreen()
+    val navController = rememberNavController()
+    SettingScreen(navController)
 }

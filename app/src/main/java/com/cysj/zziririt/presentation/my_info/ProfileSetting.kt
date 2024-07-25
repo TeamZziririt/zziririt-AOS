@@ -3,10 +3,12 @@ package com.cysj.zziririt.presentation.my_info
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
@@ -21,33 +23,42 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.R
 import com.cysj.zziririt.ui.theme.ZziriritTheme
 import com.cysj.zziririt.ui.theme.gmarketsans_light
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 @Composable
-fun ProfileSetting(navController : NavHostController) {
+fun ProfileSettingScreen(navController : NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
     ) {
         Column {
-            Image(painterResource(id = R.drawable.ic_back_btn), contentDescription = null,
-                modifier = Modifier.clickable {  })
-            Text(
-                text = "프로필 설정",
-                fontWeight = FontWeight.Bold,
-                fontFamily = gmarketsans_medium,
-                color = Color.White,
-                fontSize = 20.sp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp),
-                textAlign = TextAlign.Center
+            Row(modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = 56.dp)) {
+                Image(painterResource(id = R.drawable.ic_back_btn), contentDescription = null,
+                    modifier = Modifier.clickable {
+                        navController.currentBackStack
+                    })
+                Text(
+                    text = "프로필 설정",
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = gmarketsans_medium,
+                    color = Color.White,
+                    fontSize = 20.sp,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 8.dp),
+                    textAlign = TextAlign.Center
 
-            )
+                )
+            }
+
 
             Spacer(modifier = Modifier.height(16.dp))
             Divider(color = Color.Gray, thickness = 0.5.dp)
@@ -63,7 +74,7 @@ fun ProfileSetting(navController : NavHostController) {
             )
             Text(
                 text = "사진 변경", color = Color.Blue,
-                fontFamily = gmarketsans_light,
+                fontFamily = gmarketsans_medium,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 8.dp, bottom = 8.dp),
@@ -78,14 +89,14 @@ fun ProfileSetting(navController : NavHostController) {
                     .fillMaxWidth()
                     .padding(5.dp),
                 textAlign = TextAlign.Center,
-                fontFamily = gmarketsans_light,
+                fontFamily = gmarketsans_medium,
 
             )
             Text(
                 text = "(기존 닉네임)", color = Color.White,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                fontFamily = gmarketsans_light,
+                fontFamily = gmarketsans_medium,
             )
         } // Column 2
     } //전체 c
@@ -94,9 +105,10 @@ fun ProfileSetting(navController : NavHostController) {
 
 @Preview
 @Composable
-fun ProfileSettingScreen() {
+fun ProfileSettingScreenPreview() {
     ZziriritTheme {
-//        ProfileSetting()
+        val navController = rememberNavController()
+        ProfileSettingScreen(navController)
     }
 
 }

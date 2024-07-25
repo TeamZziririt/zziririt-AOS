@@ -33,10 +33,11 @@ import com.cysj.zziririt.ui.theme.ZziriritTheme
 import com.cysj.zziririt.R
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 import androidx.navigation.compose.composable
+import com.cysj.zziririt.presentation.main.Screen
 
 
 @Composable
-fun MyInfoScreen(navController : NavController) {
+fun MyInfoScreen(navController : NavController,) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -48,9 +49,8 @@ fun MyInfoScreen(navController : NavController) {
             Image(
                 painterResource(id = R.drawable.ic_setting_line),
                 contentDescription = null,
-                // 맨 오른쪽으로
                 modifier = Modifier.clickable {
-//                    navController.navigate(MyPageScreen.MyPage_Setting.route)
+                    navController.navigate(Screen.Setting.route)
                 }
             )
         }
@@ -89,10 +89,10 @@ fun MyInfoScreen(navController : NavController) {
             Column {
                 TitleItem(text = "나의 찌리릿")
 
-                MenuItem(iconName = R.drawable.ic_mypage_write, text = "내가 작성한 게시글") {}
-                MenuItem(iconName = R.drawable.ic_mypage_comment, text = "내가 작성한 댓글") {}
-                MenuItem(iconName = R.drawable.ic_mypage_fire, text = "내가 찌리릿한 게시글") {}
-                MenuItem(iconName = R.drawable.ic_mypage_heart, text = "내가 찌리릿한 댓글") {}
+                MenuItem(iconName = R.drawable.ic_mypage_write, text = "내가 작성한 게시글", onClick = {})
+                MenuItem(iconName = R.drawable.ic_mypage_comment, text = "내가 작성한 댓글",onClick = {})
+                MenuItem(iconName = R.drawable.ic_mypage_fire, text = "내가 찌리릿한 게시글", onClick = {})
+                MenuItem(iconName = R.drawable.ic_mypage_heart, text = "내가 찌리릿한 댓글", onClick = {})
             }
         } // box2
 
@@ -107,9 +107,10 @@ fun MyInfoScreen(navController : NavController) {
             Column {
                 TitleItem(text = "찌리릿 소식")
 
-                MenuItem(iconName = R.drawable.ic_mypage_notice, text = "공지사항") {}
-                MenuItem(iconName = R.drawable.ic_mypage_event, text = "이벤트") {}
-                MenuItem(iconName = R.drawable.ic_mypage_iconshop, text = "아이콘샵") {}
+                MenuItem(iconName = R.drawable.ic_mypage_notice, text = "공지사항", onClick = {})
+                MenuItem(iconName = R.drawable.ic_mypage_event, text = "이벤트", onClick = {})
+                MenuItem(iconName = R.drawable.ic_mypage_iconshop, text = "아이콘샵", onClick = {})
+
 
                 Spacer(modifier = Modifier.width(5.dp))
 
@@ -129,6 +130,7 @@ fun MyInfoScreenPreview() {
     val navController = rememberNavController()
 
     ZziriritTheme {
+        val navController = rememberNavController()
         MyInfoScreen(navController)
     }
 }
