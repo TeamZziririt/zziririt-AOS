@@ -15,24 +15,25 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cysj.zziririt.ui.theme.gmarketsans_bold
 import com.cysj.zziririt.ui.theme.gmarketsans_light
+import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 @Composable
 fun MenuItem(iconName: Int, text: String, onClick: () -> Unit,) {
     Row(modifier = Modifier
-        .clickable { })
+        .clickable { }
+        .padding(start = 8.dp, end = 5.dp, bottom = 8.dp))
     {
         Image(
             painterResource(id = iconName), contentDescription = null,
             contentScale = ContentScale.Fit,
-            modifier = Modifier
-                .padding(end = 3.dp)
         )
         Text(
             text = text,
             color = Color.White,
-            fontFamily = gmarketsans_light,
+            fontFamily = gmarketsans_medium,
             modifier = Modifier
                 .align(Alignment.CenterVertically)
+                .padding(start = 5.dp)
         )
     }
 }

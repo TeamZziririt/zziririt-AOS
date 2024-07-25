@@ -55,12 +55,12 @@ fun SettingScreen() {
                 )
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             Divider(color = Color.Gray, thickness = 0.5.dp)
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             MenuItem(iconName = R.drawable.ic_settings_bell, text = "알림설정") {}
-            MenuItem(iconName = R.drawable.ic_settings_profile_edit, text = "프로필 수정") {}
+            MenuItem(iconName = R.drawable.ic_settings_profile_edit, text = "프로필 수정",) {}
             MenuItem(iconName = R.drawable.ic_settings_information, text = "로그인 정보") {}
 
 

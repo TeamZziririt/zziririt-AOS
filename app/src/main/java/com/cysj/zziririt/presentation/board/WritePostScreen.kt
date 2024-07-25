@@ -66,10 +66,12 @@ fun WritePostScreen() {
                 ) {
                     TextButton(onClick = { /*저장버튼*/ }) {
                         Text(text = "저장", fontFamily = gmarketsans_medium)
+                        // 제목 & 내용 버튼 모두 입력되어야 버튼 활성화
                     }
                     FilledTonalButton(onClick = { /*등록 버튼*/ }) {
 
                         Text(text = "등록",fontFamily = gmarketsans_medium)
+                        // 제목 & 내용 버튼 모두 입력되어야 버튼 활성화
                     }
                 }
             }
