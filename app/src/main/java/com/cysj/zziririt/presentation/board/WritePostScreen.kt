@@ -78,7 +78,8 @@ fun WritePostScreen() {
             Divider(color = Color.Gray, thickness = 0.7.dp)
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text(text = "제목을 입력해주세요", color = Color.White, fontFamily = gmarketsans_light)
+            Text(text = "제목을 입력해주세요", color = Color.White, fontFamily = gmarketsans_light,
+                modifier = Modifier.padding(start = 8.dp))
             Spacer(modifier = Modifier.height(16.dp))
             Divider(color = Color.Gray, thickness = 0.7.dp)
 
@@ -87,9 +88,10 @@ fun WritePostScreen() {
                 contentDescription = null,
                 modifier = Modifier
                     .size(40.dp)
-                    .padding(top = 8.dp, start = 16.dp, bottom = 8.dp)
+                    .padding(top = 8.dp, start = 8.dp, bottom = 8.dp)
             )
-            Text(text = "내용을 입력해주세요", color = Color.White, fontFamily = gmarketsans_light)
+            Text(text = "내용을 입력해주세요", color = Color.White, fontFamily = gmarketsans_light,
+                modifier = Modifier.padding(start = 8.dp))
         } //column
 
     }
