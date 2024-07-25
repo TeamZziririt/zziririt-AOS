@@ -78,14 +78,14 @@ fun ProfileSetting(navController : NavHostController) {
                     .fillMaxWidth()
                     .padding(5.dp),
                 textAlign = TextAlign.Center,
-                fontFamily = gmarketsans_light,
+                fontFamily = gmarketsans_medium,
 
             )
             Text(
                 text = "(기존 닉네임)", color = Color.White,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
-                fontFamily = gmarketsans_light,
+                fontFamily = gmarketsans_medium,
             )
         } // Column 2
     } //전체 c

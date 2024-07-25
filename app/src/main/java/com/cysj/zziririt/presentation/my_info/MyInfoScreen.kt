@@ -47,11 +47,7 @@ fun MyInfoScreen(navController : NavController) {
         Column(horizontalAlignment = Alignment.End) {
             Image(
                 painterResource(id = R.drawable.ic_setting_line),
-                contentDescription = null,
-                // 맨 오른쪽으로
-                modifier = Modifier.clickable {
-//                    navController.navigate(MyPageScreen.MyPage_Setting.route)
-                }
+                contentDescription = null
             )
         }
         Box(
