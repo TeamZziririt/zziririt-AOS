@@ -30,7 +30,7 @@ import com.cysj.zziririt.ui.theme.gmarketsans_light
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 @Composable
-fun SettingScreen(naviController: NavController) {
+fun SettingScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -67,12 +67,13 @@ fun SettingScreen(naviController: NavController) {
 
 
         } // Column
-    } // box
+    } // boxnavController
+
 }
 
 @Preview
 @Composable
 fun SettingScreenScreenPreview() {
-    val naviController = rememberNavController()
-    SettingScreen(naviController)
+    val navController = rememberNavController()
+    SettingScreen(navController)
 }
