@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -38,13 +39,10 @@ fun ProfileSettingScreen(navController : NavController) {
             .fillMaxSize()
     ) {
         Column {
-            Row(modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(min = 56.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(painterResource(id = R.drawable.ic_back_btn), contentDescription = null,
-                    modifier = Modifier.clickable {
-                        navController.currentBackStack
-                    })
+                    modifier = Modifier.clickable { navController.popBackStack() },
+                )
                 Text(
                     text = "프로필 설정",
                     fontWeight = FontWeight.Bold,
@@ -55,7 +53,6 @@ fun ProfileSettingScreen(navController : NavController) {
                         .fillMaxWidth()
                         .padding(top = 8.dp),
                     textAlign = TextAlign.Center
-
                 )
             }
 
@@ -77,24 +74,20 @@ fun ProfileSettingScreen(navController : NavController) {
                 fontFamily = gmarketsans_medium,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 8.dp, bottom = 8.dp),
+                    .padding(top = 16.dp, bottom = 8.dp)
+                    .clickable { // 사진변경
+                         },
                 textAlign = TextAlign.Center
+
             )
         } // Column 1
 
         Column() {
             Text(
-                text = "닉네임", color = Color.White,
+                text = "대니주", color = Color.White,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(5.dp),
-                textAlign = TextAlign.Center,
-                fontFamily = gmarketsans_medium,
-
-            )
-            Text(
-                text = "(기존 닉네임)", color = Color.White,
-                modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 fontFamily = gmarketsans_medium,
             )

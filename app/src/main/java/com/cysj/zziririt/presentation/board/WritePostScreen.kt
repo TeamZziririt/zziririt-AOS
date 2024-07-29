@@ -40,9 +40,9 @@ fun WritePostScreen() {
     ) {
         Column {
             Row(modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(min = 56.dp),
-                horizontalArrangement = Arrangement.Start
+                .fillMaxWidth(),
+                horizontalArrangement = Arrangement.Start,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Row(modifier = Modifier
                     .heightIn(min = 56.dp)
@@ -59,6 +59,7 @@ fun WritePostScreen() {
                     Text(text = "글쓰기", color = Color.White, fontSize = 25.sp,
                         fontFamily = gmarketsans_bold)
                 }
+
                 Row(
                     modifier = Modifier
                         .fillMaxWidth(),

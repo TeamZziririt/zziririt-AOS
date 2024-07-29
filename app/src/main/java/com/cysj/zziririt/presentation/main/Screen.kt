@@ -7,5 +7,6 @@ enum class Screen(val route: String) {
     MyInfo("my_info"),
     PostContent("post_content"),
     Setting("setting"),
-//    ProfileSetting("profile_setting"),
+    ProfileSetting("profile_setting"),
+
 }

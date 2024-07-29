@@ -18,7 +18,7 @@ import com.cysj.zziririt.ui.theme.gmarketsans_light
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 @Composable
-fun MenuItem(iconName: Int, text: String, onClick: () -> Unit,) {
+fun MenuItem(iconName: Int, text: String, modifier : Modifier = Modifier.padding(start = 8.dp)) {
     Row(modifier = Modifier
         .clickable { }
         .padding(start = 8.dp, end = 5.dp, bottom = 8.dp))
