@@ -1,5 +1,6 @@
 package com.cysj.zziririt.presentation.my_info
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -30,6 +31,7 @@ import com.cysj.zziririt.R
 import com.cysj.zziririt.presentation.main.Screen
 import com.cysj.zziririt.ui.theme.gmarketsans_light
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
+import kotlin.math.log
 
 @Composable
 fun SettingScreen(navController: NavController) {
@@ -42,13 +44,13 @@ fun SettingScreen(navController: NavController) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(40.dp), // 원하는 높이 설정
+                    .height(35.dp), // 원하는 높이 설정
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(painterResource(id = R.drawable.ic_back_btn),
                     contentDescription = null,
                     modifier = Modifier.clickable {
-                        // back stack
+                        navController.popBackStack()
                     })
                 Text(
                     modifier = Modifier
@@ -65,15 +67,18 @@ fun SettingScreen(navController: NavController) {
             Divider(color = Color.Gray, thickness = 0.5.dp)
             Spacer(modifier = Modifier.height(16.dp))
 
-            MenuItem(iconName = R.drawable.ic_settings_bell, text = "알림설정") {}
-            MenuItem(iconName = R.drawable.ic_settings_profile_edit, text = "프로필 수정") {
-                Modifier.clickable {
-                    navController.navigate(Screen.ProfileSetting.route)
-                }
+            MenuItem(iconName = R.drawable.ic_settings_bell, text = "알림설정",
+                modifier = Modifier)
+
+            Column {
+                Image(painterResource(id = R.drawable.ic_settings_profile_edit), contentDescription = null,
+                    modifier = Modifier
+                        .padding(start = 8.dp)
+                        .clickable { navController.navigate(Screen.ProfileSetting.route )})
             }
-            MenuItem(iconName = R.drawable.ic_settings_information, text = "로그인 정보") {}
-
-
+            MenuItem(iconName = R.drawable.ic_settings_profile_edit, text = "프로필 수정",
+                modifier = Modifier.clickable { navController.navigate(Screen.Home.route )})
+            MenuItem(iconName = R.drawable.ic_settings_information, text = "로그인 정보", modifier = Modifier)
         } // Column
     } // boxnavController
 

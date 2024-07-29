@@ -126,7 +126,7 @@ fun NavigationHost(navController: NavHostController) {
         composable(Screen.Search.route) { SearchScreen(navController) }
         composable(Screen.MyInfo.route) { MyInfoScreen(navController) }
         composable(Screen.PostContent.route) { PostContentScreen(navController) }
-        composable(Screen.Setting.route) { SettingScreen(navController)}
+        composable(Screen.Setting.route) { SettingScreen(navController) }
         composable(Screen.ProfileSetting.route) { ProfileSettingScreen(navController) }
     }
 }
