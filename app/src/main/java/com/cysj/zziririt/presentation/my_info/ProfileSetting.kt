@@ -74,8 +74,11 @@ fun ProfileSettingScreen(navController : NavController) {
                 fontFamily = gmarketsans_light,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 8.dp, bottom = 8.dp),
+                    .padding(top = 16.dp, bottom = 8.dp)
+                    .clickable { // 사진변경
+                         },
                 textAlign = TextAlign.Center
+
             )
         } // Column 1
 

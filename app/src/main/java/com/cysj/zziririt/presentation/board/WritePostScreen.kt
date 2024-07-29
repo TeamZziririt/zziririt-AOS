@@ -37,7 +37,8 @@ fun WritePostScreen() {
         Column {
             Row(modifier = Modifier
                 .fillMaxWidth(),
-                horizontalArrangement = Arrangement.Start
+                horizontalArrangement = Arrangement.Start,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
                     painterResource(id = R.drawable.writepost_x),
@@ -48,7 +49,7 @@ fun WritePostScreen() {
                         .align(Alignment.CenterVertically),
                 )
 
-                Text(text = "글쓰기", color = Color.White, fontSize = 15.sp)
+                Text(text = "글쓰기", color = Color.White, fontSize = 24.sp,)
                 Row(
                     modifier = Modifier
                         .fillMaxWidth(),
