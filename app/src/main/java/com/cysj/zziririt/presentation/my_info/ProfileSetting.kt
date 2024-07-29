@@ -30,7 +30,7 @@ import com.cysj.zziririt.ui.theme.gmarketsans_light
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 @Composable
-fun ProfileSetting(navController : NavController) {
+fun ProfileSettingScreen(navController : NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -99,7 +99,7 @@ fun ProfileSetting(navController : NavController) {
 fun ProfileSettingScreen() {
     ZziriritTheme {
         val navController = rememberNavController()
-        ProfileSetting(navController)
+        ProfileSettingScreen(navController)
     }
 
 }

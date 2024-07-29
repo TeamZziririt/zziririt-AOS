@@ -24,8 +24,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.R
+import com.cysj.zziririt.presentation.main.Screen
 import com.cysj.zziririt.ui.theme.gmarketsans_light
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
@@ -45,7 +47,9 @@ fun SettingScreen(navController: NavController) {
             ) {
                 Image(painterResource(id = R.drawable.ic_back_btn),
                     contentDescription = null,
-                    modifier = Modifier.clickable { })
+                    modifier = Modifier.clickable {
+                        // back stack
+                    })
                 Text(
                     modifier = Modifier
                         .fillMaxWidth(),
@@ -62,7 +66,11 @@ fun SettingScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(16.dp))
 
             MenuItem(iconName = R.drawable.ic_settings_bell, text = "알림설정") {}
-            MenuItem(iconName = R.drawable.ic_settings_profile_edit, text = "프로필 수정") {}
+            MenuItem(iconName = R.drawable.ic_settings_profile_edit, text = "프로필 수정") {
+                Modifier.clickable {
+                    navController.navigate(Screen.ProfileSetting.route)
+                }
+            }
             MenuItem(iconName = R.drawable.ic_settings_information, text = "로그인 정보") {}
 
 
