@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Divider
@@ -45,12 +46,13 @@ fun StreamerBoardApply() {
             // Row1
             Row(
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .heightIn(min = 56.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Image(
-                    painterResource(id = R.drawable.writepost_x),
+                    painterResource(id = R.drawable.ic_write_x),
                     contentDescription = null
                 )
                 Text(
@@ -150,7 +152,7 @@ fun StreamerBoardApply() {
                         modifier = Modifier
                             .padding(end = 8.dp)
                     )
-                    Image(painterResource(id = R.drawable.writepost_photo), contentDescription = null,
+                    Image(painterResource(id = R.drawable.ic_writepage_photo), contentDescription = null,
                         modifier = Modifier
                             .size(24.dp))
 

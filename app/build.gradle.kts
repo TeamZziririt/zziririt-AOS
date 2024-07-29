@@ -127,4 +127,6 @@ dependencies {
 
     // 네아로
     implementation("com.navercorp.nid:oauth:5.9.1")
+
+//    implementation("com.google.accompanist:accompaniest-permissions:0.21.1-beta")
 }
