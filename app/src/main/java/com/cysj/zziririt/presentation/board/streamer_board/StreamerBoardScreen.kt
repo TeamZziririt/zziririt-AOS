@@ -24,15 +24,16 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.R
+import com.cysj.zziririt.presentation.board.model.PostItem
 import com.cysj.zziririt.presentation.main.Screen
 import com.cysj.zziririt.ui.theme.ZziriritTheme
+import com.cysj.zziririt.ui.theme.gmarketsans_bold
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StreamerScreen(
     navController: NavController,
 ) {
-
 
     // TODO ViewModel로 이동
     var expanded by remember { mutableStateOf(false) }
@@ -42,29 +43,32 @@ fun StreamerScreen(
     var selectedText by remember { mutableStateOf("최신순") }
 
     val postItems = listOf(
-        PostItem(
-            image = R.drawable.img,
+        PostItem.BriefPostItem(
+            id = 1,
+            imageRes = R.drawable.img,
             title = "게시글 제목1",
             commentNum = 5,
             name = "작성자 이름",
             date = "2023-07-09"
         ),
-        PostItem(
-            image = R.drawable.img,
+        PostItem.BriefPostItem(
+            id = 2,
+            imageRes = R.drawable.img,
             title = "게시글 제목2",
             commentNum = 2,
             name = "작성자 이름",
             date = "2023-07-10"
         ),
-        PostItem(
-            image = R.drawable.img,
+        PostItem.BriefPostItem(
+            id = 3,
+            imageRes = R.drawable.img,
             title = "게시글 제목3",
             commentNum = 4,
             name = "훈이좋아",
             date = "2023-07-11"
-        ),
-
         )
+    )
+
 
 
     Box(
@@ -85,6 +89,7 @@ fun StreamerScreen(
                     text = "스트리머 전체글",
                     color = Color.White,
                     fontSize = 24.sp,
+                    fontFamily = gmarketsans_bold,
                 )
                 IconButton(
                     onClick = { expanded = !expanded },
@@ -176,14 +181,16 @@ fun StreamerScreen(
                         modifier = Modifier
                             .clickable { selectedText = "최신순" }
                             .padding(8.dp),
-                        color = Color(0xFF00FFA3)
+                        color = Color(0xFF00FFA3),
+                        fontFamily = gmarketsans_bold,
                     )
                     Text(
                         text = "인기순",
                         modifier = Modifier
                             .clickable { selectedText = "인기순" }
                             .padding(8.dp),
-                        color = Color(0xFF535353)
+                        color = Color(0xFF535353),
+                        fontFamily = gmarketsans_bold,
                     )
                 } else {
                     Text(
@@ -312,11 +319,13 @@ fun NoticeRow(
             text = title,
             modifier = Modifier.weight(1f),
             color = Color.White,
+//            fontFamily = gmarketsans_bold,
         )
         Spacer(modifier = Modifier.width(8.dp))
         Text(
             text = date,
-            color = Color(0xFFADADAD)
+            color = Color(0xFFADADAD),
+//            fontFamily = gmarketsans_bold,
         )
     }
 }
@@ -325,7 +334,7 @@ fun NoticeRow(
 // 게시물 레이아웃
 @Composable
 fun PostRow(
-    item: PostItem,
+    item: PostItem.BriefPostItem,
     onClick: () -> Unit,
 ) {
     Row(
@@ -362,7 +371,7 @@ fun PostRow(
                     Text(
                         text = item.title,
                         color = Color.White,
-                        fontSize = 16.sp
+                        fontSize = 16.sp,
                     )
                     Spacer(modifier = Modifier.width(4.dp))
 
@@ -400,7 +409,7 @@ fun PostRow(
         }
 
         Image(
-            painter = painterResource(id = item.image),
+            painter = painterResource(id = item.imageRes),
             contentDescription = null,
             modifier = Modifier
                 .size(40.dp)
@@ -413,7 +422,7 @@ fun PostRow(
 // 게시물 LazyColumn
 @Composable
 fun PostList(
-    posts: List<PostItem>,
+    posts: List<PostItem.BriefPostItem>,
     onClick: () -> Unit,
 ) {
     LazyColumn(
