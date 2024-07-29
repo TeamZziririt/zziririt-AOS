@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -67,18 +68,29 @@ fun SettingScreen(navController: NavController) {
             Divider(color = Color.Gray, thickness = 0.5.dp)
             Spacer(modifier = Modifier.height(8.dp))
 
-            MenuItem(iconName = R.drawable.ic_settings_bell, text = "알림설정",
-                modifier = Modifier)
-
-            Column {
-                Image(painterResource(id = R.drawable.ic_settings_profile_edit), contentDescription = null,
+            Column(modifier = Modifier
+                .padding(start = 8.dp)) {
+                MenuItem(
+                    iconName = R.drawable.ic_settings_bell, text = "알림설정",
                     modifier = Modifier
-                        .padding(start = 8.dp)
-                        .clickable { navController.navigate(Screen.ProfileSetting.route )})
+                )
+
+                Column {
+                    Image(painterResource(id = R.drawable.ic_settings_profile_edit),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .padding(start = 8.dp, bottom = 8.dp)
+                            .clickable { navController.navigate(Screen.ProfileSetting.route) })
+                }
+                MenuItem(iconName = R.drawable.ic_settings_profile_edit, text = "프로필 수정",
+                    modifier = Modifier.clickable { navController.navigate(Screen.ProfileSetting.route) })
+                MenuItem(
+                    iconName = R.drawable.ic_settings_information,
+                    text = "로그인 정보",
+                    modifier = Modifier
+                )
             }
-            MenuItem(iconName = R.drawable.ic_settings_profile_edit, text = "프로필 수정",
-                modifier = Modifier.clickable { navController.navigate(Screen.Home.route )})
-            MenuItem(iconName = R.drawable.ic_settings_information, text = "로그인 정보", modifier = Modifier)
+
         } // Column
     } // boxnavController
 
