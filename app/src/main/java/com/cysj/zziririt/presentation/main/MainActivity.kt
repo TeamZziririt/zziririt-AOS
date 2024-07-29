@@ -1,11 +1,8 @@
 package com.cysj.zziririt.presentation.main
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -47,7 +44,6 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     MainScreen(navController, mainViewModel)
                 }
-
             }
         }
     }

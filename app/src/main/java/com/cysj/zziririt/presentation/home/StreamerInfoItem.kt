@@ -5,10 +5,3 @@ data class StreamerInfoItem(
     val subscribers: Int,
     val isFollow: Boolean,
 )
-
-data class BoardRankingInfoItem(
-    val rank: Int,
-    val imageRes: Int,
-    val title: String,
-    val username: String,
-)

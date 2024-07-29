@@ -41,17 +41,18 @@ import com.cysj.zziririt.ui.theme.gmarketsans_medium
 fun ProfileSettingScreen(navController : NavController) {
 
     val context = LocalContext.current
-//    val multiplePermissionState = rememberMultiplePermissionsState(
-//        permissions = mutableListOf(
-//            android.Manifest.permission.READ_MEDIA_IMAGES,
-//            android.Manifest.permission.READ_EXTERNAL_STORAGE
-//        )
-//    )
 
-    val galleryLauncher = rememberLauncherForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { isGranted ->
-        Toast.makeText(context,"isGranted = $isGranted", Toast.LENGTH_SHORT).show()
+    val permissions = listOf(
+        android.Manifest.permission.READ_EXTERNAL_STORAGE,
+        android.Manifest.permission.READ_MEDIA_IMAGES,
+    )
+
+    val multiplePermissionsLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissionsMap ->
+        permissionsMap.forEach { (permission, isGranted) ->
+            Toast.makeText(context, "$permission isGranted = $isGranted", Toast.LENGTH_SHORT).show()
+        }
     }
 
     Column(
@@ -60,7 +61,8 @@ fun ProfileSettingScreen(navController : NavController) {
     ) {
         Column {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Image(painterResource(id = R.drawable.ic_back_btn), contentDescription = null,
+                Image(
+                    painterResource(id = R.drawable.ic_back_btn), contentDescription = null,
                     modifier = Modifier.clickable { navController.popBackStack() },
                 )
                 Text(
@@ -97,7 +99,7 @@ fun ProfileSettingScreen(navController : NavController) {
                     .padding(top = 16.dp, bottom = 8.dp)
                     .clickable {
                         // 사진변경
-                        galleryLauncher.launch(android.Manifest.permission.READ_MEDIA_IMAGES)
+                        multiplePermissionsLauncher.launch(permissions.toTypedArray())
                     },
                 textAlign = TextAlign.Center
 
