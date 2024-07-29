@@ -1,5 +1,8 @@
 package com.cysj.zziririt.presentation.my_info
 
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -18,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -32,8 +36,24 @@ import com.cysj.zziririt.ui.theme.ZziriritTheme
 import com.cysj.zziririt.ui.theme.gmarketsans_light
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
+
 @Composable
 fun ProfileSettingScreen(navController : NavController) {
+
+    val context = LocalContext.current
+//    val multiplePermissionState = rememberMultiplePermissionsState(
+//        permissions = mutableListOf(
+//            android.Manifest.permission.READ_MEDIA_IMAGES,
+//            android.Manifest.permission.READ_EXTERNAL_STORAGE
+//        )
+//    )
+
+    val galleryLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        Toast.makeText(context,"isGranted = $isGranted", Toast.LENGTH_SHORT).show()
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -75,8 +95,11 @@ fun ProfileSettingScreen(navController : NavController) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 16.dp, bottom = 8.dp)
-                    .clickable { // 사진변경
-                         },
+                    .clickable {
+                        // 사진변경
+                               galleryLauncher.launch(android.Manifest.permission.READ_MEDIA_IMAGES)
+
+                    },
                 textAlign = TextAlign.Center
 
             )
