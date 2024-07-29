@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.cysj.zziririt.R
+import com.cysj.zziririt.presentation.board.model.PostItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -15,26 +16,29 @@ class StreamerBoardViewModel @Inject constructor() : ViewModel() {
     }
 
     val postItems = listOf(
-        PostItem(
-            image = R.drawable.img,
+        PostItem.BriefPostItem(
+            id = 0,
+            imageRes = R.drawable.img,
             title = "게시글 제목1",
             commentNum = 5,
             name = "작성자 이름",
-            date = "2023-07-09"
+            date = "2023-07-09",
         ),
-        PostItem(
-            image = R.drawable.img,
+        PostItem.BriefPostItem(
+            id = 1,
+            imageRes = R.drawable.img,
             title = "게시글 제목2",
             commentNum = 2,
             name = "작성자 이름",
-            date = "2023-07-10"
+            date = "2023-07-10",
         ),
-        PostItem(
-            image = R.drawable.img,
+        PostItem.BriefPostItem(
+            id = 2,
+            imageRes = R.drawable.img,
             title = "게시글 제목3",
             commentNum = 4,
             name = "훈이좋아",
-            date = "2023-07-11"
+            date = "2023-07-11",
         ),
     )
 
