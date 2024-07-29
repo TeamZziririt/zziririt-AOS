@@ -3,6 +3,7 @@ package com.cysj.zziririt.presentation.home
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,10 +24,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import com.cysj.zziririt.R
+import com.cysj.zziririt.presentation.board.model.PostItem
 import com.cysj.zziririt.presentation.main.MainViewModel
+import com.cysj.zziririt.presentation.main.Screen
 import com.cysj.zziririt.ui.theme.ZziriritTheme
 
 
@@ -166,7 +170,10 @@ fun HomeScreen(
             Spacer(modifier = Modifier.height(8.dp))
 
             // 실시간 게시판 랭킹 메인
-            BoardRankingInfoList(boardRankingInfoItems)
+            BoardRankingInfoList(
+                boardRankingInfoItems,
+                navController,
+            )
         }
     }
 }
@@ -220,10 +227,15 @@ fun StreamerInfoRow(streamer: StreamerInfoItem) {
 }
 
 @Composable
-fun BoardRankingInfoList(items: List<BoardRankingInfoItem>) {
+fun BoardRankingInfoList(
+    items: List<PostItem.BoardRankingInfoPostItem>,
+    navController: NavController,
+) {
     Column {
         items.take(10).forEach { item ->
-            BoardRankingInfoRow(item)
+            BoardRankingInfoRow(item, onClick = {
+                navController.navigate(Screen.PostContent.route)
+            })
             Spacer(
                 modifier = Modifier.padding(
                     vertical = 4.dp
@@ -237,7 +249,10 @@ fun BoardRankingInfoList(items: List<BoardRankingInfoItem>) {
 실시간 인기 게시글 랭킹 Info Row
 */
 @Composable
-fun BoardRankingInfoRow(item: BoardRankingInfoItem) {
+fun BoardRankingInfoRow(
+    item: PostItem.BoardRankingInfoPostItem,
+    onClick: () -> Unit,
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -254,6 +269,7 @@ fun BoardRankingInfoRow(item: BoardRankingInfoItem) {
                     vertical = 8.dp,
                     horizontal = 16.dp,
                 )
+                .clickable(onClick = onClick),
         ) {
             Text(
                 text = "${item.rank}",
@@ -285,7 +301,7 @@ fun BoardRankingInfoRow(item: BoardRankingInfoItem) {
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = item.username,
+                    text = item.name,
                     color = Color.Gray,
                     fontSize = 14.sp,
                     maxLines = 1,
