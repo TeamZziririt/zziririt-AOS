@@ -97,8 +97,7 @@ fun ProfileSettingScreen(navController : NavController) {
                     .padding(top = 16.dp, bottom = 8.dp)
                     .clickable {
                         // 사진변경
-                               galleryLauncher.launch(android.Manifest.permission.READ_MEDIA_IMAGES)
-
+                        galleryLauncher.launch(android.Manifest.permission.READ_MEDIA_IMAGES)
                     },
                 textAlign = TextAlign.Center
 
