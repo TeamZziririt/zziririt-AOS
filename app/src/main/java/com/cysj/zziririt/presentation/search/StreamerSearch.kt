@@ -1,5 +1,6 @@
 package com.cysj.zziririt.presentation.search
 
+import android.graphics.drawable.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -14,15 +15,20 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -32,6 +38,8 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -48,22 +56,34 @@ import com.google.android.material.search.SearchBar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StreamerSearchScreen(navController: NavController) {
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .padding(all = 8.dp)) {
-        Column(Modifier
-            .fillMaxWidth()) {
-            Text(text = "스트리머 게시판 검색", fontWeight = FontWeight.Bold, color = Color.White
-            , fontFamily = gmarketsans_bold, fontSize = 24.sp)
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(all = 8.dp)
+    ) {
+        Column(
+            Modifier
+                .fillMaxWidth()
+        ) {
+            Text(
+                text = "스트리머 게시판 검색",
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+                fontFamily = gmarketsans_bold,
+                fontSize = 24.sp
+            )
             Spacer(modifier = Modifier.width(15.dp))
             SearchBar("")
             Spacer(modifier = Modifier.width(15.dp))
-            Text(text = "스트리머 게시판 랭킹", fontWeight = FontWeight.Bold, color = Color.White
-                , fontFamily = gmarketsans_medium, fontSize = 16.sp)
+            Text(
+                text = "스트리머 게시판 랭킹",
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+                fontFamily = gmarketsans_medium,
+                fontSize = 16.sp
+            )
 
 //            StreamerApplyBtn()
-
-
 
 
         } // column
@@ -72,18 +92,18 @@ fun StreamerSearchScreen(navController: NavController) {
 
 @Composable
 fun SearchBar(
-    hint : String,
+    hint: String,
     modifier: Modifier = Modifier,
-    isEnabled : (Boolean) = true,
-    height : Dp = 40.dp,
-    elevation : Dp = 3.dp,
+    isEnabled: (Boolean) = true,
+    height: Dp = 40.dp,
+    elevation: Dp = 3.dp,
     backgroundColor: Color = Color.White,
     cornerShape: Shape = RoundedCornerShape(8.dp),
-    onSearchClicked : () -> Unit = {},
-    onTextChange : (String) -> Unit = {},
-    ) {
+    onSearchClicked: () -> Unit = {},
+    onTextChange: (String) -> Unit = {},
+) {
 
-    val text by remember { mutableStateOf(TextFieldValue()) }
+    var text by remember { mutableStateOf(TextFieldValue()) }
     Row(
         Modifier
             .height(height)
@@ -100,6 +120,7 @@ fun SearchBar(
                 .padding(horizontal = 24.dp),
             value = text,
             onValueChange = {
+                text = it
                 onTextChange(it.text)
             },
             enabled = isEnabled,
@@ -119,9 +140,45 @@ fun SearchBar(
                 }
                 innerTextField()
             },
-
-
-            )
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Search
+            ),
+            keyboardActions = KeyboardActions(onSearch = { onSearchClicked() }),
+            singleLine = true
+        )
+        Box(
+            modifier = modifier
+                .weight(1f)
+                .size(40.dp)
+                .background(color = Color.Transparent, shape = CircleShape)
+                .clickable {
+                    if (text.text.isNotEmpty()) {
+                        text = TextFieldValue(text = "")
+                        onTextChange("")
+                    }
+                },
+        ) {
+            if (text.text.isNotEmpty()) {
+                Icon(
+                    modifier = modifier
+                        .fillMaxSize()
+                        .padding(10.dp),
+                    painter = painterResource(id = R.drawable.ic_streamer_apply_pencil),
+                    contentDescription = null,
+                    tint = Color.White,
+                )
+            } else {
+                Icon(
+                    modifier = modifier
+                        .fillMaxSize()
+                        .padding(10.dp),
+                    painter = painterResource(id = R.drawable.ic_mypage_write),
+                    contentDescription = null,
+                    tint = Color.Blue,
+                )
+            }
+        }
 
 
     }
@@ -143,6 +200,7 @@ fun SearchBar(
         }
     }
 }
+
 @Preview
 @Composable
 fun StreamerSearchPreview() {
