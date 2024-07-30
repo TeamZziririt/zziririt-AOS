@@ -92,7 +92,7 @@ fun BottomNavigationBar(
                     when (screen) {
                         "home" -> Text(text = "Home")
                         "board" -> Text(text = "Board")
-                        "search" -> Text(text = "Search")
+                        "search" -> Text(text = "search")
                         "my_info" -> Text(text = "My Info")
                         else -> null
                     }

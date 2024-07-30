@@ -1,10 +1,13 @@
 package com.cysj.zziririt.presentation.my_info
 
+import android.Manifest
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -38,85 +41,87 @@ import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 
 @Composable
-fun ProfileSettingScreen(navController : NavController) {
+fun ProfileSettingScreen(navController: NavController) {
+    Box(modifier = Modifier.background(Color.Black)) {
+        val context = LocalContext.current
 
-    val context = LocalContext.current
+        val permissions = listOf(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.READ_MEDIA_IMAGES,
+        )
 
-    val permissions = listOf(
-        android.Manifest.permission.READ_EXTERNAL_STORAGE,
-        android.Manifest.permission.READ_MEDIA_IMAGES,
-    )
-
-    val multiplePermissionsLauncher = rememberLauncherForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions()
-    ) { permissionsMap ->
-        permissionsMap.forEach { (permission, isGranted) ->
-            Toast.makeText(context, "$permission isGranted = $isGranted", Toast.LENGTH_SHORT).show()
+        val multiplePermissionsLauncher = rememberLauncherForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) { permissionsMap ->
+            permissionsMap.forEach { (permission, isGranted) ->
+                Toast.makeText(context, "$permission isGranted = $isGranted", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
-    }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        Column {
-            Row(verticalAlignment = Alignment.CenterVertically) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            Column {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Image(
+                        painterResource(id = R.drawable.ic_back_btn), contentDescription = null,
+                        modifier = Modifier.clickable { navController.popBackStack() },
+                    )
+                    Text(
+                        text = "프로필 설정",
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = gmarketsans_medium,
+                        color = Color.White,
+                        fontSize = 20.sp,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 8.dp),
+                        textAlign = TextAlign.Center
+                    )
+                }
+
+
+                Spacer(modifier = Modifier.height(16.dp))
+                Divider(color = Color.Gray, thickness = 0.5.dp)
+                Spacer(modifier = Modifier.height(16.dp))
+
                 Image(
-                    painterResource(id = R.drawable.ic_back_btn), contentDescription = null,
-                    modifier = Modifier.clickable { navController.popBackStack() },
-                )
-                Text(
-                    text = "프로필 설정",
-                    fontWeight = FontWeight.Bold,
-                    fontFamily = gmarketsans_medium,
-                    color = Color.White,
-                    fontSize = 20.sp,
+                    painterResource(id = R.drawable.ic_profie_logo),
+                    contentDescription = null,
+                    contentScale = ContentScale.Fit,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 8.dp),
-                    textAlign = TextAlign.Center
+                        .align(Alignment.CenterHorizontally)
                 )
-            }
+                Text(
+                    text = "사진 변경", color = Color.Blue,
+                    fontFamily = gmarketsans_medium,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 16.dp, bottom = 8.dp)
+                        .clickable {
+                            // 사진변경
+                            multiplePermissionsLauncher.launch(permissions.toTypedArray())
+                        },
+                    textAlign = TextAlign.Center
 
+                )
+            } // Column 1
 
-            Spacer(modifier = Modifier.height(16.dp))
-            Divider(color = Color.Gray, thickness = 0.5.dp)
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Image(
-                painterResource(id = R.drawable.ic_profie_logo),
-                contentDescription = null,
-                contentScale = ContentScale.Fit,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .align(Alignment.CenterHorizontally)
-            )
-            Text(
-                text = "사진 변경", color = Color.Blue,
-                fontFamily = gmarketsans_medium,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp, bottom = 8.dp)
-                    .clickable {
-                        // 사진변경
-                        multiplePermissionsLauncher.launch(permissions.toTypedArray())
-                    },
-                textAlign = TextAlign.Center
-
-            )
-        } // Column 1
-
-        Column() {
-            Text(
-                text = "대니주", color = Color.White,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(5.dp),
-                textAlign = TextAlign.Center,
-                fontFamily = gmarketsans_medium,
-            )
-        } // Column 2
-    } //전체 c
+            Column() {
+                Text(
+                    text = "대니주", color = Color.White,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(5.dp),
+                    textAlign = TextAlign.Center,
+                    fontFamily = gmarketsans_medium,
+                )
+            } // Column 2
+        } //전체 c
+    }
 }
 
 

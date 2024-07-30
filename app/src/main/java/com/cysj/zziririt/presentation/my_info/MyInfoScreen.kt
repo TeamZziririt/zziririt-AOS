@@ -1,6 +1,7 @@
 package com.cysj.zziririt.presentation.my_info
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -37,7 +38,8 @@ import com.cysj.zziririt.presentation.main.Screen
 
 
 @Composable
-fun MyInfoScreen(navController : NavController,) {
+fun MyInfoScreen(navController: NavController) {
+    Box(modifier = Modifier.background(Color.Black)) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -78,7 +80,11 @@ fun MyInfoScreen(navController : NavController,) {
             }
         }
 
-        Divider(color = Color.White, thickness = 0.5.dp, modifier = Modifier.padding(top = 16.dp, bottom = 16.dp))
+        Divider(
+            color = Color.White,
+            thickness = 0.5.dp,
+            modifier = Modifier.padding(top = 16.dp, bottom = 16.dp)
+        )
 
         Box(
             modifier = Modifier
@@ -89,10 +95,26 @@ fun MyInfoScreen(navController : NavController,) {
             Column {
                 TitleItem(text = "나의 찌리릿")
 
-                MenuItem(iconName = R.drawable.ic_mypage_write, text = "내가 작성한 게시글", modifier =  Modifier)
-                MenuItem(iconName = R.drawable.ic_mypage_comment, text = "내가 작성한 댓글", modifier =  Modifier)
-                MenuItem(iconName = R.drawable.ic_mypage_fire, text = "내가 찌리릿한 게시글", modifier =  Modifier)
-                MenuItem(iconName = R.drawable.ic_mypage_heart, text = "내가 찌리릿한 댓글", modifier =  Modifier)
+                MenuItem(
+                    iconName = R.drawable.ic_mypage_write,
+                    text = "내가 작성한 게시글",
+                    modifier = Modifier
+                )
+                MenuItem(
+                    iconName = R.drawable.ic_mypage_comment,
+                    text = "내가 작성한 댓글",
+                    modifier = Modifier
+                )
+                MenuItem(
+                    iconName = R.drawable.ic_mypage_fire,
+                    text = "내가 찌리릿한 게시글",
+                    modifier = Modifier
+                )
+                MenuItem(
+                    iconName = R.drawable.ic_mypage_heart,
+                    text = "내가 찌리릿한 댓글",
+                    modifier = Modifier
+                )
             }
         } // box2
 
@@ -107,9 +129,13 @@ fun MyInfoScreen(navController : NavController,) {
             Column {
                 TitleItem(text = "찌리릿 소식")
 
-                MenuItem(iconName = R.drawable.ic_mypage_notice, text = "공지사항", modifier =  Modifier)
-                MenuItem(iconName = R.drawable.ic_mypage_event, text = "이벤트", modifier =  Modifier)
-                MenuItem(iconName = R.drawable.ic_mypage_iconshop, text = "아이콘샵", modifier =  Modifier)
+                MenuItem(iconName = R.drawable.ic_mypage_notice, text = "공지사항", modifier = Modifier)
+                MenuItem(iconName = R.drawable.ic_mypage_event, text = "이벤트", modifier = Modifier)
+                MenuItem(
+                    iconName = R.drawable.ic_mypage_iconshop,
+                    text = "아이콘샵",
+                    modifier = Modifier
+                )
 
                 Spacer(modifier = Modifier.width(5.dp))
 
@@ -119,7 +145,9 @@ fun MyInfoScreen(navController : NavController,) {
             }
         } // box3
     } //column
+    }
 }
+
 
 
 

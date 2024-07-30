@@ -50,6 +50,7 @@ import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.R
 import com.cysj.zziririt.ui.theme.Zziririt
 import com.cysj.zziririt.ui.theme.gmarketsans_bold
+import com.cysj.zziririt.ui.theme.gmarketsans_light
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 import com.google.android.material.search.SearchBar
 
@@ -59,7 +60,7 @@ fun StreamerSearchScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(all = 8.dp)
+            .background(Color.Black)
     ) {
         Column(
             Modifier
@@ -91,13 +92,13 @@ fun StreamerSearchScreen(navController: NavController) {
 }
 
 @Composable
-fun SearchBar(
+private fun SearchBar(
     hint: String,
     modifier: Modifier = Modifier,
     isEnabled: (Boolean) = true,
     height: Dp = 40.dp,
     elevation: Dp = 3.dp,
-    backgroundColor: Color = Color.White,
+    backgroundColor: Color = Color.DarkGray,
     cornerShape: Shape = RoundedCornerShape(8.dp),
     onSearchClicked: () -> Unit = {},
     onTextChange: (String) -> Unit = {},
@@ -125,27 +126,29 @@ fun SearchBar(
             },
             enabled = isEnabled,
             textStyle = TextStyle(
-                color = Color.Transparent,
+                color = Color.White,
                 fontSize = 16.sp,
-                fontWeight = FontWeight.Bold
+                fontFamily = gmarketsans_medium,
             ),
             decorationBox = { innerTextField ->
                 if (text.text.isEmpty()) {
                     Text(
-                        text = hint,
-                        color = Color.Green,
+                        text = "입 력 해",
+                        color = Color.LightGray,
                         fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
+                        fontFamily = gmarketsans_light
                     )
                 }
                 innerTextField()
             },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Search
-            ),
+                imeAction = ImeAction.Search,
+                showKeyboardOnFocus = true,
+                ),
             keyboardActions = KeyboardActions(onSearch = { onSearchClicked() }),
-            singleLine = true
+            singleLine = true,
+//            textStlye = TextStyle(color = Color.White)
         )
         Box(
             modifier = modifier
@@ -164,24 +167,23 @@ fun SearchBar(
                     modifier = modifier
                         .fillMaxSize()
                         .padding(10.dp),
-                    painter = painterResource(id = R.drawable.ic_streamer_apply_pencil),
+                    painter = painterResource(id = R.drawable.ic_streamer_search),
                     contentDescription = null,
-                    tint = Color.White,
+                    tint = Zziririt,
                 )
             } else {
                 Icon(
                     modifier = modifier
                         .fillMaxSize()
                         .padding(10.dp),
-                    painter = painterResource(id = R.drawable.ic_mypage_write),
+                    painter = painterResource(id = R.drawable.ic_streamer_search),
                     contentDescription = null,
-                    tint = Color.Blue,
+                    tint = Color.White,
                 )
             }
         }
-
-
     }
+
     @Composable
     fun StreamerApplyBtn() {
         Row(

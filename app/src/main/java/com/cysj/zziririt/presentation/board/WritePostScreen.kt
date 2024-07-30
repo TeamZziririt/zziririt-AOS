@@ -1,6 +1,7 @@
 package com.cysj.zziririt.presentation.board
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,6 +38,7 @@ fun WritePostScreen() {
         modifier = Modifier
             .fillMaxSize()
             .padding(all = 8.dp)
+            .background(Color.Black)
     ) {
         Column {
             Row(modifier = Modifier
