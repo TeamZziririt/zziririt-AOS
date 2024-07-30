@@ -8,5 +8,6 @@ enum class Screen(val route: String) {
     PostContent("post_content"),
     Setting("setting"),
     ProfileSetting("profile_setting"),
+    StreamerSearch("streamer_search"),
 
 }

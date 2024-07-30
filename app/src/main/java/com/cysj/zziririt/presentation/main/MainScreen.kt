@@ -19,6 +19,7 @@ import com.cysj.zziririt.presentation.my_info.ProfileSettingScreen
 import com.cysj.zziririt.presentation.my_info.SettingScreen
 import com.cysj.zziririt.presentation.postcontent.PostContentScreen
 import com.cysj.zziririt.presentation.search.SearchScreen
+import com.cysj.zziririt.presentation.search.StreamerSearchScreen
 import com.cysj.zziririt.ui.theme.ZziriritTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -127,6 +128,7 @@ fun NavigationHost(navController: NavHostController) {
         composable(Screen.PostContent.route) { PostContentScreen(navController) }
         composable(Screen.Setting.route) { SettingScreen(navController) }
         composable(Screen.ProfileSetting.route) { ProfileSettingScreen(navController) }
+        composable(Screen.StreamerSearch.route) { StreamerSearchScreen(navController)}
 
     }
 }

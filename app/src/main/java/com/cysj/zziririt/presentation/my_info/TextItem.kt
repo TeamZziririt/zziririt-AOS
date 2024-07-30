@@ -17,6 +17,12 @@ import com.cysj.zziririt.ui.theme.gmarketsans_bold
 import com.cysj.zziririt.ui.theme.gmarketsans_light
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
+
+data class MenuItem2 (
+    val iconName: Int,
+    val text: String,
+    val modifier: Modifier
+)
 @Composable
 fun MenuItem(iconName: Int, text: String, modifier : Modifier = Modifier.padding(start = 8.dp)) {
     Row(modifier = Modifier

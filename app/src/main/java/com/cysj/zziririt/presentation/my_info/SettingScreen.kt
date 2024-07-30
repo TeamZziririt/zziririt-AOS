@@ -37,8 +37,7 @@ import kotlin.math.log
 @Composable
 fun SettingScreen(navController: NavController) {
     Box(
-        modifier = Modifier
-            .fillMaxSize()
+        modifier = Modifier.fillMaxSize()
     ) {
         // BoardScreen의 내용
         Column {
@@ -54,8 +53,7 @@ fun SettingScreen(navController: NavController) {
                         navController.popBackStack()
                     })
                 Text(
-                    modifier = Modifier
-                        .fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth(),
                     text = "환경설정",
                     color = Color.White,
                     textAlign = TextAlign.Center,
@@ -68,37 +66,51 @@ fun SettingScreen(navController: NavController) {
             Divider(color = Color.Gray, thickness = 0.5.dp)
             Spacer(modifier = Modifier.height(8.dp))
 
-            Column(modifier = Modifier
-                .padding(start = 8.dp)) {
+            Column(
+                modifier = Modifier.padding(start = 8.dp)
+            ) {
                 MenuItem(
-                    iconName = R.drawable.ic_settings_bell, text = "알림설정",
-                    modifier = Modifier
+                    iconName = R.drawable.ic_settings_bell, text = "알림설정", modifier = Modifier
                 )
 
                 Column {
-                    Image(painterResource(id = R.drawable.ic_settings_profile_edit),
+                    Image(painterResource(id = R.drawable.ic_settings_bell),
                         contentDescription = null,
                         modifier = Modifier
                             .padding(start = 8.dp, bottom = 8.dp)
-                            .clickable { navController.navigate(Screen.ProfileSetting.route) })
+                            .clickable { navController.navigate(Screen.StreamerSearch.route) })
+
+                    Column {
+                        Image(painterResource(id = R.drawable.ic_settings_profile_edit),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .padding(start = 8.dp, bottom = 8.dp)
+                                .clickable { navController.navigate(Screen.ProfileSetting.route) })
+
+                        MenuItem2(iconName = R.drawable.ic_settings_profile_edit,
+                            text = "프로필 수정2",
+                            modifier = Modifier.clickable {
+                                navController.navigate(Screen.ProfileSetting.route)
+                            }) /// 왜 안보영
+                    }
+
+                    MenuItem(iconName = R.drawable.ic_settings_profile_edit,
+                        text = "프로필 수정",
+                        modifier = Modifier.clickable { navController.navigate(Screen.ProfileSetting.route) })
+                    MenuItem(
+                        iconName = R.drawable.ic_settings_information,
+                        text = "로그인 정보",
+                        modifier = Modifier
+                    )
                 }
-                MenuItem(iconName = R.drawable.ic_settings_profile_edit, text = "프로필 수정",
-                    modifier = Modifier.clickable { navController.navigate(Screen.ProfileSetting.route) })
-                MenuItem(
-                    iconName = R.drawable.ic_settings_information,
-                    text = "로그인 정보",
-                    modifier = Modifier
-                )
-            }
 
-        } // Column
-    } // boxnavController
+            } // Column
+        } // boxnavController
 
+    }
 }
-
 @Preview
 @Composable
-
 fun SettingScreenScreenPreview() {
     val navController = rememberNavController()
     SettingScreen(navController)
