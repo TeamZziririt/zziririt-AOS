@@ -9,6 +9,7 @@ enum class Screen(val route: String) {
     Setting("setting"),
     ProfileSetting("profile_setting"),
     StreamerSearch("streamer_search"),
-    StreamerBoardApply("streamer_board_apply")
+    StreamerBoardApply("streamer_board_apply"),
+    LoginInformation("login_information"),
 
 }

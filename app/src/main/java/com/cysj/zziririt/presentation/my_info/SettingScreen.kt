@@ -77,11 +77,11 @@ fun SettingScreen(navController: NavController) {
                 )
 
                 Column {
-                    Image(painterResource(id = R.drawable.ic_settings_bell),
+                    Image(painterResource(id = R.drawable.ic_settings_information),
                         contentDescription = null,
                         modifier = Modifier
                             .padding(start = 8.dp, bottom = 8.dp)
-                            .clickable { navController.navigate(Screen.StreamerSearch.route) })
+                            .clickable { navController.navigate(Screen.LoginInformation.route) })
 
                     Column {
                         Image(painterResource(id = R.drawable.ic_settings_profile_edit),
@@ -103,7 +103,7 @@ fun SettingScreen(navController: NavController) {
                     MenuItem(
                         iconName = R.drawable.ic_settings_information,
                         text = "로그인 정보",
-                        modifier = Modifier
+                        modifier = Modifier. clickable { navController.navigate(Screen.LoginInformation.route) }
                     )
                 }
 
