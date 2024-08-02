@@ -66,7 +66,7 @@ fun LoginInformationScreen(navController: NavController) {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     MenuItem(
-                        iconName = R.drawable.ic_red_x, text = "회원 탈퇴", modifier = Modifier
+                        iconName = R.drawable.ic_red_x_center, text = "회원 탈퇴", modifier = Modifier
                     )
 
         } //전체 c
