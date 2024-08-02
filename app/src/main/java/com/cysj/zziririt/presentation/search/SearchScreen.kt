@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.R
+import com.cysj.zziririt.presentation.main.Screen
 import com.cysj.zziririt.ui.theme.Zziririt
 import com.cysj.zziririt.ui.theme.ZziriritTheme
 import com.cysj.zziririt.ui.theme.gmarketsans_bold
@@ -51,37 +52,44 @@ import com.cysj.zziririt.ui.theme.gmarketsans_medium
 fun SearchScreen(
     navController: NavController,
 ) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Black)
-    ) {
-        Column(
-            Modifier
-                .fillMaxWidth()
+    Box(modifier = Modifier)
+    {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black)
+                .padding(8.dp)
         ) {
-            Text(
-                text = "스트리머 게시판 검색",
-                fontWeight = FontWeight.Bold,
-                color = Color.White,
-                fontFamily = gmarketsans_bold,
-                fontSize = 24.sp
-            )
-            Spacer(modifier = Modifier.width(15.dp))
-            SearchBar("")
-            Spacer(modifier = Modifier.width(15.dp))
-            Text(
-                text = "스트리머 게시판 랭킹",
-                fontWeight = FontWeight.Bold,
-                color = Color.White,
-                fontFamily = gmarketsans_medium,
-                fontSize = 16.sp
-            )
+            Column(
+                Modifier
+                    .fillMaxWidth()
+            ) {
+                Text(
+                    text = "스트리머 게시판 검색",
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    fontFamily = gmarketsans_bold,
+                    fontSize = 24.sp,
+                    modifier = Modifier
+                        .padding(top = 15.dp)
+                )
+                Spacer(modifier = Modifier.width(15.dp))
+                SearchBar("")
 
-//            StreamerApplyBtn()
-
-
-        } // column
+                SearchBar("안녕하세요")
+                Spacer(modifier = Modifier.width(15.dp))
+                Text(
+                    text = "스트리머 게시판 랭킹",
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    fontFamily = gmarketsans_medium,
+                    fontSize = 18.sp,
+                    modifier = Modifier
+                        .padding(5.dp)
+                )
+                StreamerApplyBtn(navController)
+            } // column
+        } // box
     }
 }
 
@@ -101,6 +109,7 @@ private fun SearchBar(
     var text by remember { mutableStateOf(TextFieldValue()) }
     Row(
         Modifier
+            .padding(8.dp)
             .height(height)
             .fillMaxWidth()
             .shadow(elevation = elevation, shape = cornerShape)
@@ -141,8 +150,7 @@ private fun SearchBar(
                 showKeyboardOnFocus = true,
             ),
             keyboardActions = KeyboardActions(onSearch = { onSearchClicked() }),
-            singleLine = true,
-//            textStlye = TextStyle(color = Color.White)
+            singleLine = true
         )
         Box(
             modifier = modifier
@@ -177,25 +185,26 @@ private fun SearchBar(
             }
         }
     }
-
+}
     @Composable
-    fun StreamerApplyBtn() {
+    fun StreamerApplyBtn(navController : NavController) {
         Row(
             Modifier
-                .heightIn(min = 8.dp)
+                .heightIn(min = 2.dp)
                 .background(Zziririt)
                 .clip(RoundedCornerShape(10.dp))
                 .clickable {
+                    navController.navigate(Screen.StreamerBoardApply.route)
                 },
         ) {
             Image(
                 painterResource(id = R.drawable.ic_streamer_apply_pencil),
                 contentDescription = null
             )
-            Text(text = "스트리머 게시판 신청하기", fontFamily = gmarketsans_bold, color = Color.Black)
+            Text(text = "스트리머 게시판 신청하기", fontFamily = gmarketsans_medium, color = Color.Black,)
         }
     }
-}
+
 
 
 @Preview(showBackground = true)

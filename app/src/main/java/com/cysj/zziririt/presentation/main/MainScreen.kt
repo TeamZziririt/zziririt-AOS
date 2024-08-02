@@ -19,6 +19,7 @@ import com.cysj.zziririt.presentation.my_info.ProfileSettingScreen
 import com.cysj.zziririt.presentation.my_info.SettingScreen
 import com.cysj.zziririt.presentation.postcontent.PostContentScreen
 import com.cysj.zziririt.presentation.search.SearchScreen
+import com.cysj.zziririt.presentation.search.StreamerBoardApplyScreen
 import com.cysj.zziririt.presentation.search.StreamerSearchScreen
 import com.cysj.zziririt.ui.theme.ZziriritTheme
 
@@ -129,6 +130,7 @@ fun NavigationHost(navController: NavHostController) {
         composable(Screen.Setting.route) { SettingScreen(navController) }
         composable(Screen.ProfileSetting.route) { ProfileSettingScreen(navController) }
         composable(Screen.StreamerSearch.route) { StreamerSearchScreen(navController)}
+        composable(Screen.StreamerBoardApply.route) { StreamerBoardApplyScreen(navController)}
 
     }
 }
