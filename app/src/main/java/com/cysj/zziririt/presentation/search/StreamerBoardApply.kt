@@ -2,6 +2,7 @@ package com.cysj.zziririt.presentation.search
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
@@ -32,6 +33,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -67,7 +69,10 @@ fun StreamerBoardApplyScreen(navController: NavController) {
             ) {
                 Image(
                     painterResource(id = R.drawable.ic_write_x),
-                    contentDescription = null
+                    contentDescription = null,
+                    modifier = Modifier.clickable {
+                        navController.popBackStack()
+                    }
                 )
                 Text(
                     text = "스트리머 게시판 신청하기",
