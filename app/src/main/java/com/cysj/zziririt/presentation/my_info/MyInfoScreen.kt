@@ -45,15 +45,18 @@ fun MyInfoScreen(navController: NavController) {
             .fillMaxSize()
             .padding(16.dp),
         verticalArrangement = Arrangement.Top,
-//        horizontalAlignment = Alignment.Start
+
     ) {
-        Column(horizontalAlignment = Alignment.End) {
+        Row(modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.End ) {
             Image(
                 painterResource(id = R.drawable.ic_setting_line),
                 contentDescription = null,
-                modifier = Modifier.clickable {
+                modifier = Modifier
+                    .clickable {
                     navController.navigate(Screen.Setting.route)
                 }
+
             )
         }
         Box(
