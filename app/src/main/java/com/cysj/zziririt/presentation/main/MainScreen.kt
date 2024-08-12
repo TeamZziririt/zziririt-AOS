@@ -14,12 +14,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import com.cysj.zziririt.presentation.board.streamer_board.StreamerScreen
 import com.cysj.zziririt.presentation.home.HomeScreen
-import com.cysj.zziririt.presentation.my_info.LoginInformationScreen
+import com.cysj.zziririt.presentation.my_info.setting.LoginInformationScreen
 import com.cysj.zziririt.presentation.my_info.MyInfoScreen
-import com.cysj.zziririt.presentation.my_info.ProfileSettingScreen
-import com.cysj.zziririt.presentation.my_info.SettingScreen
+import com.cysj.zziririt.presentation.my_info.setting.ProfileSettingScreen
+import com.cysj.zziririt.presentation.my_info.setting.SettingScreen
 import com.cysj.zziririt.presentation.my_info.my_zziririt.LikedCommentScreen
-import com.cysj.zziririt.presentation.my_info.my_zziririt.LikedPostPreview
 import com.cysj.zziririt.presentation.my_info.my_zziririt.LikedPostScreen
 import com.cysj.zziririt.presentation.my_info.my_zziririt.WrittenCommentScreen
 import com.cysj.zziririt.presentation.my_info.my_zziririt.WrittenPostScreen
@@ -140,7 +139,7 @@ fun NavigationHost(navController: NavHostController) {
         composable(Screen.ProfileSetting.route) { ProfileSettingScreen(navController) }
         composable(Screen.StreamerSearch.route) { StreamerSearchScreen(navController)}
         composable(Screen.StreamerBoardApply.route) { StreamerBoardApplyScreen(navController)}
-        composable(Screen.LoginInformation.route) { LoginInformationScreen(navController)}
+        composable(Screen.LoginInformation.route) { LoginInformationScreen(navController) }
         composable(Screen.LikedPost.route) { LikedPostScreen(navController) }
         composable(Screen.LikedComment.route) { LikedCommentScreen(navController) }
         composable(Screen.WrittenPost.route) { WrittenPostScreen(navController) }

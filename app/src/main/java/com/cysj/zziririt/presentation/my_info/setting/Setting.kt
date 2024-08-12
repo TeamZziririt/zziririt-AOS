@@ -1,4 +1,4 @@
-package com.cysj.zziririt.presentation.my_info
+package com.cysj.zziririt.presentation.my_info.setting
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,6 +26,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.R
 import com.cysj.zziririt.presentation.main.Screen
+import com.cysj.zziririt.presentation.my_info.MenuItem
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 @Composable
@@ -66,59 +67,41 @@ fun SettingScreen(navController: NavController) {
                 modifier = Modifier.padding(start = 8.dp)
             ) {
                 MenuItem(
-                    iconName = R.drawable.ic_settings_bell, text = "알림설정", navController = navController, route = Screen.LoginInformation.route,
+                    iconName = R.drawable.ic_settings_bell,
+                    text = "알림설정",
+                    navController = navController,
+                    route = Screen.LoginInformation.route,
                     modifier = Modifier.clickable {
                         navController.navigate(Screen.ProfileSetting.route)
                     })
 
-                Column {
-                    Image(painterResource(id = R.drawable.ic_settings_information),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .padding(start = 8.dp, bottom = 8.dp)
-                            .clickable { navController.navigate(Screen.LoginInformation.route) })
 
-                    Column {
-                        Image(painterResource(id = R.drawable.ic_settings_profile_edit),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .padding(start = 8.dp, bottom = 8.dp)
-                                .clickable { navController.navigate(Screen.ProfileSetting.route) })
-
-                        MenuItem2(iconName = R.drawable.ic_settings_profile_edit,
-                            text = "프로필 수정2",
-                            modifier = Modifier.clickable {
-                                navController.navigate(Screen.ProfileSetting.route)
-                            }) /// 왜 안보영
+                MenuItem(
+                    iconName = R.drawable.ic_settings_profile_edit,
+                    text = "프로필 수정",
+                    navController = navController,
+                    route = Screen.ProfileSetting.route,
+                    modifier = Modifier.clickable {
+                        navController.navigate(Screen.ProfileSetting.route)
                     }
 
-                    MenuItem(
-                        iconName = R.drawable.ic_settings_profile_edit,
-                        text = "프로필 수정",
-                        navController = navController,
-                        route = Screen.ProfileSetting.route,
-                        modifier = Modifier.clickable {
-                            navController.navigate(Screen.ProfileSetting.route)
-                        }
+                )
+                MenuItem(
+                    iconName = R.drawable.ic_settings_information,
+                    text = "로그인 정보",
+                    navController = navController,
+                    route = Screen.LoginInformation.route,
+                    modifier = Modifier.clickable {
+                        navController.navigate(Screen.ProfileSetting.route)
+                    }
 
-                    )
-                    MenuItem(
-                        iconName = R.drawable.ic_settings_information,
-                        text = "로그인 정보",
-                        navController = navController,
-                        route = Screen.LoginInformation.route,
-                        modifier = Modifier.clickable {
-                            navController.navigate(Screen.ProfileSetting.route)
-                        }
+                )
+            }
 
-                    )
-                }
-
-            } // Column
-        } // boxnavController
-
-    }
+        } // Column
+    } // boxnavController
 }
+
 @Preview
 @Composable
 fun SettingScreenScreenPreview() {

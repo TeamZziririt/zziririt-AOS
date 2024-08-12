@@ -18,11 +18,7 @@ import com.cysj.zziririt.ui.theme.gmarketsans_bold
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 
-data class MenuItem2 (
-    val iconName: Int,
-    val text: String,
-    val modifier: Modifier
-)
+
 @Composable
 fun MenuItem(
     iconName: Int,
@@ -32,7 +28,7 @@ fun MenuItem(
     modifier: Modifier
 ) {
     Row(modifier = Modifier
-        .clickable { }
+        .clickable { navController.navigate(route) }
         .padding(start = 8.dp, end = 5.dp, bottom = 8.dp))
     {
         Image(

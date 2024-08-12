@@ -96,7 +96,7 @@ fun MyInfoScreen(navController: NavController) {
                     navController = navController,
                     route = Screen.LoginInformation.route,
                     modifier = Modifier.clickable {
-                        navController.navigate(Screen.ProfileSetting.route)
+                        navController.navigate(Screen.WrittenPost.route)
                     }
                 )
                 MenuItem(
@@ -105,7 +105,7 @@ fun MyInfoScreen(navController: NavController) {
                     navController = navController,
                     route = Screen.LoginInformation.route,
                     modifier = Modifier.clickable {
-                        navController.navigate(Screen.ProfileSetting.route)
+                        navController.navigate(Screen.WrittenComment.route)
                     }
                 )
                 MenuItem(
@@ -114,7 +114,7 @@ fun MyInfoScreen(navController: NavController) {
                     navController = navController,
                     route = Screen.LoginInformation.route,
                     modifier = Modifier.clickable {
-                        navController.navigate(Screen.ProfileSetting.route)
+                        navController.navigate(Screen.LikedPost.route)
                     }
                 )
                 MenuItem(
@@ -123,7 +123,7 @@ fun MyInfoScreen(navController: NavController) {
                     navController = navController,
                     route = Screen.LoginInformation.route,
                     modifier = Modifier.clickable {
-                        navController.navigate(Screen.ProfileSetting.route)
+                        navController.navigate(Screen.LikedComment.route)
                     }
                 )
             }
@@ -181,9 +181,9 @@ fun MyInfoScreen(navController: NavController) {
 fun MyInfoScreenPreview() {
     val navController = rememberNavController()
 
-    ZziriritTheme {
-        val navController = rememberNavController()
+//    ZziriritTheme {
+//        val navController = rememberNavController()
         MyInfoScreen(navController)
-    }
+//    }
 }
 

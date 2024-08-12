@@ -1,4 +1,4 @@
-package com.cysj.zziririt.presentation.my_info
+package com.cysj.zziririt.presentation.my_info.setting
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -27,6 +27,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.R
 import com.cysj.zziririt.presentation.main.Screen
+import com.cysj.zziririt.presentation.my_info.MenuItem
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 @Composable
