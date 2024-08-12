@@ -11,5 +11,12 @@ enum class Screen(val route: String) {
     StreamerSearch("streamer_search"),
     StreamerBoardApply("streamer_board_apply"),
     LoginInformation("login_information"),
+    LikedPost("liked_post"),
+    LikedComment("liked_comment"),
+    WrittenComment("written_comment"),
+    WrittenPost("written_Post"),
+    Event("event"),
+    IconShop("event"),
+    Notice("notice")
 
 }

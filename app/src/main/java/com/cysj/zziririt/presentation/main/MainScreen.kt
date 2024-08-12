@@ -18,6 +18,14 @@ import com.cysj.zziririt.presentation.my_info.LoginInformationScreen
 import com.cysj.zziririt.presentation.my_info.MyInfoScreen
 import com.cysj.zziririt.presentation.my_info.ProfileSettingScreen
 import com.cysj.zziririt.presentation.my_info.SettingScreen
+import com.cysj.zziririt.presentation.my_info.my_zziririt.LikedCommentScreen
+import com.cysj.zziririt.presentation.my_info.my_zziririt.LikedPostPreview
+import com.cysj.zziririt.presentation.my_info.my_zziririt.LikedPostScreen
+import com.cysj.zziririt.presentation.my_info.my_zziririt.WrittenCommentScreen
+import com.cysj.zziririt.presentation.my_info.my_zziririt.WrittenPostScreen
+import com.cysj.zziririt.presentation.my_info.zziririt_news.EventScreen
+import com.cysj.zziririt.presentation.my_info.zziririt_news.IconShopScreen
+import com.cysj.zziririt.presentation.my_info.zziririt_news.NoticeScreen
 import com.cysj.zziririt.presentation.postcontent.PostContentScreen
 import com.cysj.zziririt.presentation.search.SearchScreen
 import com.cysj.zziririt.presentation.search.StreamerBoardApplyScreen
@@ -133,7 +141,13 @@ fun NavigationHost(navController: NavHostController) {
         composable(Screen.StreamerSearch.route) { StreamerSearchScreen(navController)}
         composable(Screen.StreamerBoardApply.route) { StreamerBoardApplyScreen(navController)}
         composable(Screen.LoginInformation.route) { LoginInformationScreen(navController)}
-
+        composable(Screen.LikedPost.route) { LikedPostScreen(navController) }
+        composable(Screen.LikedComment.route) { LikedCommentScreen(navController) }
+        composable(Screen.WrittenPost.route) { WrittenPostScreen(navController) }
+        composable(Screen.WrittenComment.route) { WrittenCommentScreen(navController) }
+        composable(Screen.Event.route) { EventScreen(navController) }
+        composable(Screen.IconShop.route) { IconShopScreen(navController) }
+        composable(Screen.Notice.route) { NoticeScreen(navController) }
     }
 }
 

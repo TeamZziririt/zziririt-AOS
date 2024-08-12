@@ -40,7 +40,7 @@ fun WrittenPostScreen(navController: NavController) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(35.dp), // 원하는 높이 설정
+                        .height(50.dp), // 원하는 높이 설정
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Image(
