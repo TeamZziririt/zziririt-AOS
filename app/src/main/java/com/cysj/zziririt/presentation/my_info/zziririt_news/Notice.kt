@@ -1,3 +1,13 @@
 package com.cysj.zziririt.presentation.my_info.zziririt_news
 
-fun Notice() {}
+import androidx.compose.runtime.Composable
+
+@Composable
+fun NoticeScreen() {}
+
+
+
+@Composable
+fun NoticePreview() {
+    NoticeScreen()
+}

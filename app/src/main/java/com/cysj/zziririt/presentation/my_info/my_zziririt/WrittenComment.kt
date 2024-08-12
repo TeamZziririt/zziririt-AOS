@@ -1,3 +1,13 @@
 package com.cysj.zziririt.presentation.my_info.my_zziririt
 
-fun WrittenComment() {}
+import androidx.compose.runtime.Composable
+
+@Composable
+fun WrittenCommentScreen() {}
+
+
+
+@Composable
+fun WrittenCommentPreview() {
+    WrittenCommentScreen()
+}
