@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.cysj.zziririt.ui.theme.gmarketsans_bold
-import com.cysj.zziririt.ui.theme.gmarketsans_light
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 
@@ -25,11 +24,12 @@ data class MenuItem2 (
     val modifier: Modifier
 )
 @Composable
-fun MenuItem(iconName: Int,
-             text: String,
-             navController: NavController,
-             route : String,
-             modifier: Modifier
+fun MenuItem(
+    iconName: Int,
+    text: String,
+    navController: NavController,
+    route: String,
+    modifier: Modifier
 ) {
     Row(modifier = Modifier
         .clickable { }

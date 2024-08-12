@@ -10,9 +10,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
@@ -20,20 +18,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.ui.theme.ZziriritTheme
 import com.cysj.zziririt.R
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
-import androidx.navigation.compose.composable
 import com.cysj.zziririt.presentation.main.Screen
 
 
@@ -148,12 +140,14 @@ fun MyInfoScreen(navController: NavController) {
             Column {
                 TitleItem(text = "찌리릿 소식")
 
-                MenuItem(iconName = R.drawable.ic_mypage_notice, text = "공지사항", navController = navController,
+                MenuItem(
+                    iconName = R.drawable.ic_mypage_notice, text = "공지사항", navController = navController,
                     route = Screen.LoginInformation.route,
                     modifier = Modifier.clickable {
                         navController.navigate(Screen.ProfileSetting.route)
                     })
-                MenuItem(iconName = R.drawable.ic_mypage_event, text = "이벤트", navController = navController,
+                MenuItem(
+                    iconName = R.drawable.ic_mypage_event, text = "이벤트", navController = navController,
                     route = Screen.LoginInformation.route,
                     modifier = Modifier.clickable {
                         navController.navigate(Screen.ProfileSetting.route)

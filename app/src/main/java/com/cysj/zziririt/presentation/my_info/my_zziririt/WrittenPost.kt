@@ -1,4 +1,4 @@
-package com.cysj.zziririt.presentation.my_info
+package com.cysj.zziririt.presentation.my_info.my_zziririt
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -20,17 +20,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.R
-import com.cysj.zziririt.presentation.main.Screen
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 @Composable
-fun LoginInformationScreen(navController: NavController) {
+fun WrittenPostScreen(navController: NavController) {
     Box(modifier = Modifier.background(Color.Black)) {
 
         Column(
@@ -49,7 +47,7 @@ fun LoginInformationScreen(navController: NavController) {
                         modifier = Modifier.clickable { navController.popBackStack() },
                     )
                     Text(
-                        text = "로그인 정보",
+                        text = "내가 작성한 게시글",
                         fontWeight = FontWeight.Bold,
                         fontFamily = gmarketsans_medium,
                         color = Color.White,
@@ -60,30 +58,18 @@ fun LoginInformationScreen(navController: NavController) {
                         textAlign = TextAlign.Center
                     )
                 }
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Divider(color = Color.Gray, thickness = 0.5.dp)
-                    Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(16.dp))
+                Divider(color = Color.Gray, thickness = 0.5.dp)
+                Spacer(modifier = Modifier.height(16.dp))
 
-                    MenuItem(
-                        iconName = R.drawable.ic_red_x_center, text = "회원 탈퇴",
-                        navController = navController,
-                        route = "login_information",
-                        modifier = Modifier.clickable {
-                            navController.navigate(Screen.ProfileSetting.route)
-                        }
-                    )
-
-        } //전체 c
+            } //전체 c
+        }
     }
 }
 
 
-}
-
-
-@Preview
 @Composable
-fun LoginInformationScreenPreview() {
+fun WrittenPostPriview() {
     val navController = rememberNavController()
-    LoginInformationScreen(navController)
+    WrittenPostScreen(navController)
 }

@@ -1,6 +1,5 @@
 package com.cysj.zziririt.presentation.my_info
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -11,17 +10,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,9 +26,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.R
 import com.cysj.zziririt.presentation.main.Screen
-import com.cysj.zziririt.ui.theme.gmarketsans_light
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
-import kotlin.math.log
 
 @Composable
 fun SettingScreen(navController: NavController) {
@@ -99,7 +92,8 @@ fun SettingScreen(navController: NavController) {
                             }) /// 왜 안보영
                     }
 
-                    MenuItem(iconName = R.drawable.ic_settings_profile_edit,
+                    MenuItem(
+                        iconName = R.drawable.ic_settings_profile_edit,
                         text = "프로필 수정",
                         navController = navController,
                         route = Screen.ProfileSetting.route,
