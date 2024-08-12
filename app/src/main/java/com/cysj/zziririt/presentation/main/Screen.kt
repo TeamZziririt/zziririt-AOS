@@ -17,6 +17,7 @@ enum class Screen(val route: String) {
     WrittenPost("written_Post"),
     Event("event"),
     IconShop("event"),
-    Notice("notice")
+    Notice("notice"),
+    NotifSetting("notif_setting"),
 
 }

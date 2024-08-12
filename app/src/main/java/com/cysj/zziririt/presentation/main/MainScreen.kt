@@ -17,11 +17,12 @@ import com.cysj.zziririt.presentation.home.HomeScreen
 import com.cysj.zziririt.presentation.my_info.setting.LoginInformationScreen
 import com.cysj.zziririt.presentation.my_info.MyInfoScreen
 import com.cysj.zziririt.presentation.my_info.setting.ProfileSettingScreen
-import com.cysj.zziririt.presentation.my_info.setting.SettingScreen
+import com.cysj.zziririt.presentation.my_info.SettingScreen
 import com.cysj.zziririt.presentation.my_info.my_zziririt.LikedCommentScreen
 import com.cysj.zziririt.presentation.my_info.my_zziririt.LikedPostScreen
 import com.cysj.zziririt.presentation.my_info.my_zziririt.WrittenCommentScreen
 import com.cysj.zziririt.presentation.my_info.my_zziririt.WrittenPostScreen
+import com.cysj.zziririt.presentation.my_info.setting.NotifSettingScreen
 import com.cysj.zziririt.presentation.my_info.zziririt_news.EventScreen
 import com.cysj.zziririt.presentation.my_info.zziririt_news.IconShopScreen
 import com.cysj.zziririt.presentation.my_info.zziririt_news.NoticeScreen
@@ -147,6 +148,7 @@ fun NavigationHost(navController: NavHostController) {
         composable(Screen.Event.route) { EventScreen(navController) }
         composable(Screen.IconShop.route) { IconShopScreen(navController) }
         composable(Screen.Notice.route) { NoticeScreen(navController) }
+        composable(Screen.NotifSetting.route) { NotifSettingScreen(navController) }
     }
 }
 

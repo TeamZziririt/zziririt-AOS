@@ -1,4 +1,4 @@
-package com.cysj.zziririt.presentation.my_info.setting
+package com.cysj.zziririt.presentation.my_info
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,7 +26,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.R
 import com.cysj.zziririt.presentation.main.Screen
-import com.cysj.zziririt.presentation.my_info.MenuItem
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 @Composable
@@ -70,9 +69,9 @@ fun SettingScreen(navController: NavController) {
                     iconName = R.drawable.ic_settings_bell,
                     text = "알림설정",
                     navController = navController,
-                    route = Screen.LoginInformation.route,
+                    route = Screen.NotifSetting.route,
                     modifier = Modifier.clickable {
-                        navController.navigate(Screen.ProfileSetting.route)
+                        navController.navigate(Screen.NotifSetting.route)
                     })
 
 
