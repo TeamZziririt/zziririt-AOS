@@ -101,22 +101,38 @@ fun MyInfoScreen(navController: NavController) {
                 MenuItem(
                     iconName = R.drawable.ic_mypage_write,
                     text = "내가 작성한 게시글",
-                    modifier = Modifier
+                    navController = navController,
+                    route = Screen.LoginInformation.route,
+                    modifier = Modifier.clickable {
+                        navController.navigate(Screen.ProfileSetting.route)
+                    }
                 )
                 MenuItem(
                     iconName = R.drawable.ic_mypage_comment,
                     text = "내가 작성한 댓글",
-                    modifier = Modifier
+                    navController = navController,
+                    route = Screen.LoginInformation.route,
+                    modifier = Modifier.clickable {
+                        navController.navigate(Screen.ProfileSetting.route)
+                    }
                 )
                 MenuItem(
                     iconName = R.drawable.ic_mypage_fire,
                     text = "내가 찌리릿한 게시글",
-                    modifier = Modifier
+                    navController = navController,
+                    route = Screen.LoginInformation.route,
+                    modifier = Modifier.clickable {
+                        navController.navigate(Screen.ProfileSetting.route)
+                    }
                 )
                 MenuItem(
                     iconName = R.drawable.ic_mypage_heart,
                     text = "내가 찌리릿한 댓글",
-                    modifier = Modifier
+                    navController = navController,
+                    route = Screen.LoginInformation.route,
+                    modifier = Modifier.clickable {
+                        navController.navigate(Screen.ProfileSetting.route)
+                    }
                 )
             }
         } // box2
@@ -132,12 +148,24 @@ fun MyInfoScreen(navController: NavController) {
             Column {
                 TitleItem(text = "찌리릿 소식")
 
-                MenuItem(iconName = R.drawable.ic_mypage_notice, text = "공지사항", modifier = Modifier)
-                MenuItem(iconName = R.drawable.ic_mypage_event, text = "이벤트", modifier = Modifier)
+                MenuItem(iconName = R.drawable.ic_mypage_notice, text = "공지사항", navController = navController,
+                    route = Screen.LoginInformation.route,
+                    modifier = Modifier.clickable {
+                        navController.navigate(Screen.ProfileSetting.route)
+                    })
+                MenuItem(iconName = R.drawable.ic_mypage_event, text = "이벤트", navController = navController,
+                    route = Screen.LoginInformation.route,
+                    modifier = Modifier.clickable {
+                        navController.navigate(Screen.ProfileSetting.route)
+                    })
                 MenuItem(
                     iconName = R.drawable.ic_mypage_iconshop,
                     text = "아이콘샵",
-                    modifier = Modifier
+                    navController = navController,
+                    route = Screen.LoginInformation.route,
+                    modifier = Modifier.clickable {
+                        navController.navigate(Screen.ProfileSetting.route)
+                    }
                 )
 
                 Spacer(modifier = Modifier.width(5.dp))

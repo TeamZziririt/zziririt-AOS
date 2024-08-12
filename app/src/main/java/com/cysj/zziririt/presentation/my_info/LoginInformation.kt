@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.R
+import com.cysj.zziririt.presentation.main.Screen
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
 @Composable
@@ -66,7 +67,12 @@ fun LoginInformationScreen(navController: NavController) {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     MenuItem(
-                        iconName = R.drawable.ic_red_x_center, text = "회원 탈퇴", modifier = Modifier
+                        iconName = R.drawable.ic_red_x_center, text = "회원 탈퇴",
+                        navController = navController,
+                        route = "login_information",
+                        modifier = Modifier.clickable {
+                            navController.navigate(Screen.ProfileSetting.route)
+                        }
                     )
 
         } //전체 c
