@@ -10,4 +10,6 @@ fun WrittenPostScreen() {
 
 
 @Composable
-fun WrittenPostPriview() {}
+fun WrittenPostPriview() {
+    WrittenPostScreen()
+}
