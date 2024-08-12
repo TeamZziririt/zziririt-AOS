@@ -23,7 +23,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.cysj.zziririt.ui.theme.ZziriritTheme
 import com.cysj.zziririt.R
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 import com.cysj.zziririt.presentation.main.Screen
@@ -94,7 +93,7 @@ fun MyInfoScreen(navController: NavController) {
                     iconName = R.drawable.ic_mypage_write,
                     text = "내가 작성한 게시글",
                     navController = navController,
-                    route = Screen.LoginInformation.route,
+                    route = Screen.WrittenPost.route,
                     modifier = Modifier.clickable {
                         navController.navigate(Screen.WrittenPost.route)
                     }
@@ -103,7 +102,7 @@ fun MyInfoScreen(navController: NavController) {
                     iconName = R.drawable.ic_mypage_comment,
                     text = "내가 작성한 댓글",
                     navController = navController,
-                    route = Screen.LoginInformation.route,
+                    route = Screen.WrittenComment.route,
                     modifier = Modifier.clickable {
                         navController.navigate(Screen.WrittenComment.route)
                     }
@@ -112,16 +111,16 @@ fun MyInfoScreen(navController: NavController) {
                     iconName = R.drawable.ic_mypage_fire,
                     text = "내가 찌리릿한 게시글",
                     navController = navController,
-                    route = Screen.LoginInformation.route,
+                    route = Screen.LikedPost.route,
                     modifier = Modifier.clickable {
-                        navController.navigate(Screen.LikedPost.route)
+//                        navController.navigate(Screen.LikedPost.route)
                     }
                 )
                 MenuItem(
                     iconName = R.drawable.ic_mypage_heart,
                     text = "내가 찌리릿한 댓글",
                     navController = navController,
-                    route = Screen.LoginInformation.route,
+                    route = Screen.LikedComment.route,
                     modifier = Modifier.clickable {
                         navController.navigate(Screen.LikedComment.route)
                     }
@@ -142,23 +141,23 @@ fun MyInfoScreen(navController: NavController) {
 
                 MenuItem(
                     iconName = R.drawable.ic_mypage_notice, text = "공지사항", navController = navController,
-                    route = Screen.LoginInformation.route,
+                    route = Screen.Notice.route,
                     modifier = Modifier.clickable {
-                        navController.navigate(Screen.ProfileSetting.route)
+                        navController.navigate(Screen.Notice.route)
                     })
                 MenuItem(
                     iconName = R.drawable.ic_mypage_event, text = "이벤트", navController = navController,
-                    route = Screen.LoginInformation.route,
+                    route = Screen.Event.route,
                     modifier = Modifier.clickable {
-                        navController.navigate(Screen.ProfileSetting.route)
+                        navController.navigate(Screen.Event.route)
                     })
                 MenuItem(
                     iconName = R.drawable.ic_mypage_iconshop,
                     text = "아이콘샵",
                     navController = navController,
-                    route = Screen.LoginInformation.route,
+                    route = Screen.IconShop.route,
                     modifier = Modifier.clickable {
-                        navController.navigate(Screen.ProfileSetting.route)
+                        navController.navigate(Screen.IconShop.route)
                     }
                 )
 
@@ -167,6 +166,7 @@ fun MyInfoScreen(navController: NavController) {
                 TitleItemClickable("약관 및 정책")
                 Spacer(modifier = Modifier.width(50.dp))
                 TitleItemClickable("건의 / 신고")
+
             }
         } // box3
     } //column

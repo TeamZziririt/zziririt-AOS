@@ -56,13 +56,21 @@ fun TitleItem(text: String) {
 }
 
 @Composable
-fun TitleItemClickable (text: String,) {
-    Text(text = text,
+fun TitleItemClickable (
+    text: String
+    ) {
+    Row(
+        modifier = Modifier
+            .padding(top = 16.dp)
+            .clickable {  }
+    ) {
+
+    }
+    Text(
+        text = text,
         color = Color.White,
         fontSize = 22.sp,
         fontFamily = gmarketsans_bold,
-        modifier = Modifier
-            .padding(top = 16.dp)
-            .clickable { })
+        )
 }
 
