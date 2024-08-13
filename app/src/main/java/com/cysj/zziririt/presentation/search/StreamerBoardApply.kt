@@ -1,6 +1,10 @@
 package com.cysj.zziririt.presentation.search
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,12 +16,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,22 +33,32 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.R
+import com.cysj.zziririt.Zziririt
+import com.cysj.zziririt.ui.theme.Zziririt
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun StreamerBoardApply() {
+fun StreamerBoardApplyScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(all = 8.dp)
+            .background(Color.Black)
     ) {
         Column {
+            val interactionSource = remember { MutableInteractionSource() } // 상호작용 상태 추적 객체 생성 및 기억
+            val isPressed by interactionSource.collectIsPressedAsState() // 버튼 클릭 여부 state로 수집
+            val bgColor = if(isPressed) Zziririt else Color.White
+            val contentColor = if (isPressed) Zziririt else Color.Gray
+
             // Row1
             Row(
                 modifier = Modifier
@@ -53,7 +69,10 @@ fun StreamerBoardApply() {
             ) {
                 Image(
                     painterResource(id = R.drawable.ic_write_x),
-                    contentDescription = null
+                    contentDescription = null,
+                    modifier = Modifier.clickable {
+                        navController.popBackStack()
+                    }
                 )
                 Text(
                     text = "스트리머 게시판 신청하기",
@@ -61,13 +80,19 @@ fun StreamerBoardApply() {
                     color = Color.White,
                     fontSize = 20.sp
                 )
-                FilledTonalButton(onClick = { /*신청버튼*/ }) {
+                FilledTonalButton(
+                    onClick = { /*신청버튼*/ },
+                    interactionSource = interactionSource,
+                    colors = ButtonDefaults.buttonColors(
+                        contentColor = contentColor,
+                        containerColor = if (isPressed) Zziririt else Color.White,
+                    )
+                ) {
                     Text(
                         text = "신청",
                         color = Color.Black,
                         textAlign = TextAlign.End
                     )
-
                 }
             } // row1
 
@@ -168,5 +193,6 @@ fun StreamerBoardApply() {
 @Preview
 @Composable
 fun StreamerBoardApplyPreview() {
-    StreamerBoardApply()
+    val navController = rememberNavController()
+    StreamerBoardApplyScreen(navController)
 }

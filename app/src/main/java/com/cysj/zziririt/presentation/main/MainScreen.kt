@@ -14,11 +14,22 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import com.cysj.zziririt.presentation.board.streamer_board.StreamerScreen
 import com.cysj.zziririt.presentation.home.HomeScreen
+import com.cysj.zziririt.presentation.my_info.setting.LoginInformationScreen
 import com.cysj.zziririt.presentation.my_info.MyInfoScreen
-import com.cysj.zziririt.presentation.my_info.ProfileSettingScreen
+import com.cysj.zziririt.presentation.my_info.setting.ProfileSettingScreen
 import com.cysj.zziririt.presentation.my_info.SettingScreen
+import com.cysj.zziririt.presentation.my_info.my_zziririt.LikedCommentScreen
+import com.cysj.zziririt.presentation.my_info.my_zziririt.LikedPostScreen
+import com.cysj.zziririt.presentation.my_info.my_zziririt.WrittenCommentScreen
+import com.cysj.zziririt.presentation.my_info.my_zziririt.WrittenPostScreen
+import com.cysj.zziririt.presentation.my_info.setting.NotifSettingScreen
+import com.cysj.zziririt.presentation.my_info.zziririt_news.EventScreen
+import com.cysj.zziririt.presentation.my_info.zziririt_news.IconShopScreen
+import com.cysj.zziririt.presentation.my_info.zziririt_news.NoticeScreen
 import com.cysj.zziririt.presentation.postcontent.PostContentScreen
 import com.cysj.zziririt.presentation.search.SearchScreen
+import com.cysj.zziririt.presentation.search.StreamerBoardApplyScreen
+import com.cysj.zziririt.presentation.search.StreamerSearchScreen
 import com.cysj.zziririt.ui.theme.ZziriritTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -91,7 +102,7 @@ fun BottomNavigationBar(
                     when (screen) {
                         "home" -> Text(text = "Home")
                         "board" -> Text(text = "Board")
-                        "search" -> Text(text = "Search")
+                        "search" -> Text(text = "search")
                         "my_info" -> Text(text = "My Info")
                         else -> null
                     }
@@ -127,7 +138,17 @@ fun NavigationHost(navController: NavHostController) {
         composable(Screen.PostContent.route) { PostContentScreen(navController) }
         composable(Screen.Setting.route) { SettingScreen(navController) }
         composable(Screen.ProfileSetting.route) { ProfileSettingScreen(navController) }
-
+        composable(Screen.StreamerSearch.route) { StreamerSearchScreen(navController)}
+        composable(Screen.StreamerBoardApply.route) { StreamerBoardApplyScreen(navController)}
+        composable(Screen.LoginInformation.route) { LoginInformationScreen(navController) }
+        composable(Screen.LikedPost.route) { LikedPostScreen(navController) }
+        composable(Screen.LikedComment.route) { LikedCommentScreen(navController) }
+        composable(Screen.WrittenPost.route) { WrittenPostScreen(navController) }
+        composable(Screen.WrittenComment.route) { WrittenCommentScreen(navController) }
+        composable(Screen.Event.route) { EventScreen(navController) }
+        composable(Screen.IconShop.route) { IconShopScreen(navController) }
+        composable(Screen.Notice.route) { NoticeScreen(navController) }
+        composable(Screen.NotifSetting.route) { NotifSettingScreen(navController) }
     }
 }
 

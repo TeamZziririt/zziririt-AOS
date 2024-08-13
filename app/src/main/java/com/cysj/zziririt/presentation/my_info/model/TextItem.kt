@@ -1,4 +1,4 @@
-package com.cysj.zziririt.presentation.my_info
+package com.cysj.zziririt.presentation.my_info.model
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -13,14 +13,22 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.cysj.zziririt.ui.theme.gmarketsans_bold
-import com.cysj.zziririt.ui.theme.gmarketsans_light
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 
+
+
 @Composable
-fun MenuItem(iconName: Int, text: String, modifier : Modifier = Modifier.padding(start = 8.dp)) {
+fun MenuItem(
+    iconName: Int,
+    text: String,
+    navController: NavController,
+    route: String,
+    modifier: Modifier
+) {
     Row(modifier = Modifier
-        .clickable { }
+        .clickable { navController.navigate(route) }
         .padding(start = 8.dp, end = 5.dp, bottom = 8.dp))
     {
         Image(
@@ -48,13 +56,21 @@ fun TitleItem(text: String) {
 }
 
 @Composable
-fun TitleItemClickable (text: String,) {
-    Text(text = text,
+fun TitleItemClickable (
+    text: String
+    ) {
+    Row(
+        modifier = Modifier
+            .padding(top = 16.dp)
+            .clickable {  }
+    ) {
+
+    }
+    Text(
+        text = text,
         color = Color.White,
         fontSize = 22.sp,
         fontFamily = gmarketsans_bold,
-        modifier = Modifier
-            .padding(top = 16.dp)
-            .clickable { })
+        )
 }
 
