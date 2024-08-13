@@ -1,4 +1,4 @@
-package com.cysj.zziririt.presentation.my_info
+package com.cysj.zziririt.presentation.my_info.model
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

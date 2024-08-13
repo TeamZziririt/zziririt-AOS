@@ -26,6 +26,9 @@ import androidx.navigation.compose.rememberNavController
 import com.cysj.zziririt.R
 import com.cysj.zziririt.ui.theme.gmarketsans_medium
 import com.cysj.zziririt.presentation.main.Screen
+import com.cysj.zziririt.presentation.my_info.model.MenuItem
+import com.cysj.zziririt.presentation.my_info.model.TitleItem
+import com.cysj.zziririt.presentation.my_info.model.TitleItemClickable
 
 
 @Composable
